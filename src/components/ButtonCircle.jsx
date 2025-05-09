@@ -1,8 +1,15 @@
-export default function ButtonCircle({ children, className, onClick }) {
-  const btnClassName = `Button rounded-full aspect-square${ className ? ` ${className}` : '' }`
+export default function ButtonCircle ({
+  children,
+  className,
+  onClick,
+  disabled,
+}) {
+  const btnClassName = `Button rounded-full aspect-square${
+    className ? ` ${className}` : ''
+  }`
   return (
-    <button className={btnClassName} onClick={onClick}>
-      { children }
+    <button className={btnClassName} onClick={onClick} disabled={disabled} >
+      {children}
     </button>
   )
 }

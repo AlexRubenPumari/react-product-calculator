@@ -19,7 +19,7 @@ export default function CardProduct({ className = '', name, price, count }) {
 function Counter({ initialValue }) {
   const [value, setValue] = useState(initialValue)
   return (
-    <div className='flex items-center justify-center'>
+    <div className='flex items-center justify-center select-none'>
       <ButtonCircle
         className='bg-lime-600 text-white font-bold hover:bg-lime-700'
         onClick={() => setValue(add(value))}

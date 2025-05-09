@@ -5,8 +5,22 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        'expand-x': {
+          '0%': { width: '0' },
+          '100%': { width: '100%' },
+        }
+      },
+      animation: {
+        'expand-x': 'expand-x 150ms ease-in-out forwards'
+      },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')({
+      nocompatible: true
+    }),
+  ],
 }
 
