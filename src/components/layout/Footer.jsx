@@ -1,5 +1,6 @@
 import IconCalculator from '../icons/IconCalculator'
 import ButtonCircle from '../ButtonCircle'
+import Modal from '../Modal'
 import { useState } from 'react'
 
 export default function Footer () {
@@ -7,8 +8,8 @@ export default function Footer () {
   return (
     <>
       { toggleModal && (
-        <Modal>
-
+        <Modal onClose={() => setToggleModal(false)}>
+          <span>Total de venta: $100</span>
         </Modal>
       ) }
       <footer className='flex-shrink-0 h-10 px-4 relative bg-lime-600 rounded-tl-lg rounded-tr-lg'>
@@ -22,17 +23,11 @@ export default function Footer () {
     </>
   )
 }
-function Modal () {
+
+function ModalPpal ({ onClose }) {
   return (
-    <div className='Overlay flex items-center justify-center'>
-      <div className='w-10 h-10 bg-gray-100'>
-        <button className='' >×</button>
-      </div>
-    </div>
-  )
-}
-function ButtonClose () {
-  return (
-    null
+    <Modal onClose={onClose}>
+        <span>Total de venta: $100</span>
+    </Modal>
   )
 }

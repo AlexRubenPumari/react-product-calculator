@@ -1,15 +1,14 @@
+import ProductsProvider from './contexts/products'
 import Header from './components/layout/Header'
 import Main from './components/layout/Main'
 import Footer from './components/layout/Footer'
 
-function App() {
+export default function App () {
   return (
-    <>
+    <ProductsProvider>
       <Header />
       <Main />
       <Footer />
-    </>
+    </ProductsProvider>
   )
 }
-
-export default App
