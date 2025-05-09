@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .Button {
-  @apply p-3 sm:p-2 transition-colors;
+  @apply p-3 sm:p-2 select-none transition-colors;
 }
 .Overlay {
   @apply fixed inset-0 z-10 bg-black/60;
