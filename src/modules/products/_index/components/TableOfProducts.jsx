@@ -1,5 +1,5 @@
 import { Table, Row } from './Table'
-import { arrayTableHeader } from '../config/constants'
+import { arrayTableHeader } from '../../config/constants'
 
 export default function TableOfProducts ({ className = '', products }) {
   return (

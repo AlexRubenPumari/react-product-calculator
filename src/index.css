@@ -2,30 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-.efect-Button {
-  @apply select-none transition-colors;
+@layer base {
+  .base-Button {
+    @apply select-none transition-colors;
+  }
 }
-.Button {
-  @apply p-3 sm:p-2 efect-Button;
+@layer components {
+  .Input {
+    @apply px-4 py-2 rounded-md;
+  }
+  .Button {
+    @apply p-3 sm:p-2 base-Button;
+  }
+  .ButtonPrimary {
+    @apply bg-lime-600 hover:bg-lime-700 text-white font-bold rounded-lg;
+  }
+  .ButtonSecondary {
+    @apply border-2 border-current text-lime-600 hover:text-lime-700 font-bold;
+  }
+  .Overlay {
+    @apply fixed inset-0 z-10 bg-black/60;
+  }
 }
-.Button-md {
-  @apply p-5 sm:p-4 efect-Button;
+@layer utilities {
+  .Scrollbar {
+    @apply overflow-y-auto scrollbar-thin scrollbar-thumb-lime-600 scrollbar-thumb-rounded scrollbar-corner-red-950;
+  }
+  .Scrollbar::-webkit-scrollbar-thumb {
+    @apply border-[1px] border-solid border-gray-100;
+  }
+  .ButtonPrimary-bold {
+    @apply bg-lime-700 hover:bg-lime-800 text-white font-bold disabled:!bg-lime-600 disabled:text-gray-300;
+  }  
 }
-.Button-lg {
-  @apply p-7 sm:p-6 efect-Button;
-}
-.ButtonPrimary-100 {
-  @apply bg-lime-600 hover:bg-lime-700 text-white font-bold;
-}
-.ButtonPrimary-200 {
-  @apply bg-lime-700 hover:bg-lime-800 text-white font-bold disabled:!bg-lime-600 disabled:text-gray-300;
-}
-.Overlay {
-  @apply fixed inset-0 z-10 bg-black/60;
-}
-.Scrollbar {
-  @apply overflow-y-auto scrollbar-thin scrollbar-thumb-lime-600 scrollbar-thumb-rounded scrollbar-corner-red-950;
-}
-.Scrollbar::-webkit-scrollbar-thumb {
-  @apply border-[1px] border-solid border-gray-100;
-}
+
+
+

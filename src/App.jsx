@@ -5,7 +5,7 @@ import ProductsAdd from './modules/products/_add/ProductsAdd'
 import { useState } from 'react'
 
 export default function App () {
-  const [page] = useState(1)
+  const [page] = useState(2)
   return (
     <ProductsProvider>
       <Header />

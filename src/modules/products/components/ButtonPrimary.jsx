@@ -1,10 +1,10 @@
-export default function ButtonPrimary({ children, className, onClick }) {
+export default function ButtonPrimary({ children, className = '', onClick }) {
   return (
     <button
-      className={`Button ButtonPrimary-100 rounded-lg ${
-        className ? className : ''
-      }`}
-      onClick={onClick}>
+      className={`Button ButtonPrimary ${className}`}
+      onClick={onClick}
+      type='submit'
+    >
       {children}
     </button>
   )

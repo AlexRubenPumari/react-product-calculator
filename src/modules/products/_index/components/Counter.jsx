@@ -12,10 +12,10 @@ export default function Counter({ value, onIncrease, onDecrease }) {
 function ButtonCounter ({ symbol, onClick }) {
   return (
     <ButtonCircle
-      className='ButtonPrimary-100'
+      className='ButtonPrimary'
       onClick={onClick}
     >
-      <span className='block w-4 h-4 leading-3'>{ symbol }</span>
+      <span className='block size-4 leading-3'>{ symbol }</span>
     </ButtonCircle>
   )
 }

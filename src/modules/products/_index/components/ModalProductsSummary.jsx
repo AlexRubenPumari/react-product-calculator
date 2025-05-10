@@ -3,7 +3,7 @@ import { ProductsContext } from '../../contexts/products'
 import { getTotal } from '../../logic/products'
 import Modal from '../../components/Modal'
 import ButtonPrimary from '../../components/ButtonPrimary'
-import TableOfProducts from '../../components/TableOfProducts'
+import TableOfProducts from './TableOfProducts'
 
 export default function ModalProductsSummary({ onClose }) {
   const { filteredProducts } = useContext(ProductsContext)
@@ -16,7 +16,9 @@ export default function ModalProductsSummary({ onClose }) {
       <span className='text-lg font-bold'>
         {`Total: $${getTotal(filteredProducts)}`}
       </span>
-      <ButtonPrimary className='w-48' onClick={onClose}>Edit summary</ButtonPrimary>
+      <ButtonPrimary className='w-48' onClick={onClose}>
+        Edit summary
+      </ButtonPrimary>
     </Modal>
   )
 }

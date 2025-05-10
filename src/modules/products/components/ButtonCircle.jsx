@@ -1,13 +1,10 @@
 export default function ButtonCircle({
   children,
-  className,
-  spacing,
+  className = '',
   onClick,
   disabled,
 }) {
-  const btnClassName = `${
-    spacing ? `Button-${spacing}` : 'Button'
-  } rounded-full aspect-square${className ? ` ${className}` : ''}`
+  const btnClassName = `Button rounded-full ${className}`
   return (
     <button className={btnClassName} onClick={onClick} disabled={disabled}>
       {children}
