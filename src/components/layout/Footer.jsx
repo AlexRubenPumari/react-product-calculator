@@ -1,33 +1,29 @@
+import { useContext, useState } from 'react'
+import { ProductsContext } from '../../contexts/products'
 import IconCalculator from '../icons/IconCalculator'
 import ButtonCircle from '../ButtonCircle'
-import Modal from '../Modal'
-import { useState } from 'react'
+import ModalProductsSummary from '../ModalProductsSummary'
 
-export default function Footer () {
+export default function Footer() {
+  const { filteredProducts } = useContext(ProductsContext)
   const [toggleModal, setToggleModal] = useState(false)
   return (
     <>
-      { toggleModal && (
-        <Modal onClose={() => setToggleModal(false)}>
-          <span>Total de venta: $100</span>
-        </Modal>
-      ) }
+      {toggleModal && (
+        <ModalProductsSummary
+          onClose={() => setToggleModal(false)}
+        />
+      )}
       <footer className='flex-shrink-0 h-10 px-4 relative bg-lime-600 rounded-tl-lg rounded-tr-lg'>
         <ButtonCircle
-        className='p-5 sm:p-4 absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-lime-700 hover:bg-lime-800 text-white'
-        onClick={() => setToggleModal(true)}
+          className='ButtonPrimary-200 absolute left-1/2 -translate-x-1/2 -translate-y-1/2'
+          onClick={() => setToggleModal(true)}
+          disabled={filteredProducts.length === 0}
+          spacing='md'
         >
           <IconCalculator className='w-7' />
         </ButtonCircle>
       </footer>
     </>
-  )
-}
-
-function ModalPpal ({ onClose }) {
-  return (
-    <Modal onClose={onClose}>
-        <span>Total de venta: $100</span>
-    </Modal>
   )
 }

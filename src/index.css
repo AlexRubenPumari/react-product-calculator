@@ -2,8 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+.efect-Button {
+  @apply select-none transition-colors;
+}
 .Button {
-  @apply p-3 sm:p-2 select-none transition-colors;
+  @apply p-3 sm:p-2 efect-Button;
+}
+.Button-md {
+  @apply p-5 sm:p-4 efect-Button;
+}
+.Button-lg {
+  @apply p-7 sm:p-6 efect-Button;
+}
+.ButtonPrimary-100 {
+  @apply bg-lime-600 hover:bg-lime-700 text-white font-bold;
+}
+.ButtonPrimary-200 {
+  @apply bg-lime-700 hover:bg-lime-800 text-white font-bold disabled:!bg-lime-600 disabled:text-gray-300;
 }
 .Overlay {
   @apply fixed inset-0 z-10 bg-black/60;

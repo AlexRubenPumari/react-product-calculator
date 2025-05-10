@@ -24,6 +24,7 @@ function Products ({ products }) {
   return products.map(({ id, name, price, count }) => (
     <CardProduct
       key={id}
+      id={id}
       className='basis-44 flex-grow'
       name={name}
       price={price}
