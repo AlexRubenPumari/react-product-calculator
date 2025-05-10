@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react'
 import { ProductsContext } from '../../contexts/products'
-import IconCalculator from '../icons/IconCalculator'
-import ButtonCircle from '../ButtonCircle'
-import ModalProductsSummary from '../ModalProductsSummary'
+import IconCalculator from './IconCalculator'
+import ButtonCircle from '../../components/ButtonCircle'
+import ModalProductsSummary from './ModalProductsSummary'
 
 export default function Footer() {
   const { filteredProducts } = useContext(ProductsContext)

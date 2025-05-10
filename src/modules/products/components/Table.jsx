@@ -1,6 +1,7 @@
-export function Table({ cols, children }) {
+export function Table({ cols, children, className }) {
+  const TableClassName = `relative before:absolute before:w-full before:h-10 before:bg-lime-600 before:top-0 before:rounded-lg${className ? ` ${className}` : ''}`
   return (
-    <div className='relative before:absolute before:w-full before:h-10 before:bg-lime-600 before:top-0 before:rounded-lg'>
+    <div className={TableClassName}>
       <table className='relative'>
         <thead className='text-white uppercase select-none'>
           <tr>

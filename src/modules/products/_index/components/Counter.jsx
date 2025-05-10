@@ -1,4 +1,4 @@
-import ButtonCircle from './ButtonCircle'
+import ButtonCircle from '../../components/ButtonCircle'
 
 export default function Counter({ value, onIncrease, onDecrease }) {
   return (

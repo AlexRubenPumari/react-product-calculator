@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ProductsContext } from '../contexts/products'
+import { ProductsContext } from '../../contexts/products'
 import CardProduct from './CardProduct'
 
 export default function ListOfProducts() {

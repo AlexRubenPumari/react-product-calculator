@@ -23,3 +23,9 @@
 .Overlay {
   @apply fixed inset-0 z-10 bg-black/60;
 }
+.Scrollbar {
+  @apply overflow-y-auto scrollbar-thin scrollbar-thumb-lime-600 scrollbar-thumb-rounded scrollbar-corner-red-950;
+}
+.Scrollbar::-webkit-scrollbar-thumb {
+  @apply border-[1px] border-solid border-gray-100;
+}

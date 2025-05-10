@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ProductsContext } from '../contexts/products'
+import { ProductsContext } from '../../contexts/products'
 import Counter from './Counter'
 
 export default function CardProduct({ className, id, name, price, count }) {

@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
-import ButtonMenu from '../ButtonMenu'
+import { useState } from 'react'
+import ButtonMenu from './ButtonMenu'
 
 export default function Header() {
   const [toggle, setToggle] = useState(false)
