@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { ProductsContext } from '../../contexts/products'
+import ProductImage from '../../components/ProductImage'
 import Counter from './Counter'
 
 export default function CardProduct({ className, id, name, price, count }) {
@@ -10,20 +11,17 @@ export default function CardProduct({ className, id, name, price, count }) {
   }`
   return (
     <div className={cardClassName}>
-      {/* <img className='CardProduct__img'  src='' alt='' /> */}
-      <div className='w-40 h-40 bg-red-500'></div>
+      <ProductImage
+        className='size-40'
+        styles={{ hasShine: true, iceCreamColor: 'brown' }}
+      />
       <h3 className='flex-grow font-bold text-center'>{name}</h3>
       <span>{`$ ${price}`}</span>
-      <CounterProduct
+      <Counter
         value={count}
         onIncrease={() => increaseProductCount(id, products)}
         onDecrease={() => decreaseProductCount(id, products)}
       />
     </div>
-  )
-}
-function CounterProduct ({ value, onIncrease, onDecrease }) {
-  return (
-    <Counter value={value} onIncrease={onIncrease} onDecrease={onDecrease} />
   )
 }
