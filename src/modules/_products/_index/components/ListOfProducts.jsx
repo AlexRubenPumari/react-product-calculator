@@ -2,13 +2,19 @@ import { useContext } from 'react'
 import { ProductsContext } from '../../contexts/products'
 import CardProduct from './CardProduct'
 
-export default function ListOfProducts() {
+export default function ListOfProducts({className = ''}) {
   const { products } = useContext(ProductsContext)
 
-  return products?.length === 0 ? (
-    <WithoutProducts />
-  ) : (
-    <><Products products={products} /><GhostProducts /></>
+  return (
+    <div className={className}>
+      {
+        products?.length === 0 ? (
+          <WithoutProducts />
+        ) : (
+          <><Products products={products} /><GhostProducts /></>
+        )
+      }
+    </div>
   )
 }
 

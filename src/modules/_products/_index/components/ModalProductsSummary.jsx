@@ -16,7 +16,7 @@ export default function ModalProductsSummary({ onClose }) {
       <span className='text-lg font-bold'>
         {`Total: $${getTotal(filteredProducts)}`}
       </span>
-      <ButtonPrimary className='w-48' onClick={onClose}>
+      <ButtonPrimary className='w-48 max-w-full' onClick={onClose}>
         Edit summary
       </ButtonPrimary>
     </Modal>

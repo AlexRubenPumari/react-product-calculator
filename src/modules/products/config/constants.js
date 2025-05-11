@@ -1,1 +1,0 @@
-export const arrayTableHeader = ['name', 'price', 'count', 'total'] 

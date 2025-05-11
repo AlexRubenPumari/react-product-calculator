@@ -2,12 +2,12 @@ export function Table({ cols, children, className }) {
   const TableClassName = `relative before:absolute before:w-full before:h-10 before:bg-lime-600 before:top-0 before:rounded-lg${className ? ` ${className}` : ''}`
   return (
     <div className={TableClassName}>
-      <table className='relative'>
+      <table className='relative w-full'>
         <thead className='text-white uppercase select-none'>
           <tr>
-            {cols.map((col, index) => (
-              <th key={index} className='p-2'>
-                {col}
+            {cols.map(({ value, className = '' }, index) => (
+              <th key={index} className={`p-2 ${className}`}>
+                {value}
               </th>
             ))}
           </tr>

@@ -1,4 +1,4 @@
-export default function Sidebar({ onClose, items }) {
+export default function Sidebar({ onClose, items, onClicks }) {
   return (
     <div
       className='Overlay'
@@ -13,7 +13,9 @@ export default function Sidebar({ onClose, items }) {
             items.map((item, i) => (
               <li
                 key={i}
-                className='px-4 py-1 hover:bg-black/10 transition-colors cursor-pointer whitespace-nowrap' >
+                className='px-4 py-1 hover:bg-black/10 transition-colors cursor-pointer whitespace-nowrap'
+                onClick={onClicks[i]}
+              >
                   {item}
               </li>
             ))

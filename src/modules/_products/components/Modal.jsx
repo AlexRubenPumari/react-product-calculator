@@ -7,7 +7,7 @@ export default function Modal ({ children, className, onClose }) {
       onClick={onClose}
     >
       <div
-        className='max-w-[96vw] max-h-[90vh] px-4 py-7 bg-gray-100 rounded-lg'
+        className='w-[40rem] max-w-[85vw] max-h-[90vh] px-4 py-7 flex flex-col bg-gray-100 rounded-lg'
         onClick={e => e.stopPropagation()}
       >
         <ButtonClose className='block ml-auto' onClick={onClose} />

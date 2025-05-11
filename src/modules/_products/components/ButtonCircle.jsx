@@ -2,11 +2,19 @@ export default function ButtonCircle({
   children,
   className = '',
   onClick,
+  title='',
+  type='button',
   disabled,
 }) {
   const btnClassName = `Button rounded-full ${className}`
   return (
-    <button className={btnClassName} onClick={onClick} disabled={disabled}>
+    <button
+      type={type}
+      className={btnClassName}
+      disabled={disabled}
+      onClick={onClick}
+      title={title}
+    >
       {children}
     </button>
   )
