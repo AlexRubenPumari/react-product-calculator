@@ -27,10 +27,11 @@ function WithoutProducts () {
 }
 
 function Products ({ products }) {
-  return products.map(({ id, name, price, count }) => (
+  return products.map(({ id, name, price, count, img }) => (
     <CardProduct
       key={id}
       id={id}
+      img={img}
       className='basis-44 flex-grow'
       name={name}
       price={price}

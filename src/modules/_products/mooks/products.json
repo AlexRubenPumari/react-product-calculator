@@ -3,60 +3,100 @@
     "id": 1,
     "name": "Laptop",
     "price": 1200,
-    "count": 0
+    "count": 0,
+    "img": {
+      "hasShine": false,
+      "iceCreamColor": "red"
+    }
   },
   {
     "id": 2,
     "name": "Mouse inalámbrico",
     "price": 25,
-    "count": 0
+    "count": 0,
+    "img": {
+      "hasShine": true,
+      "iceCreamColor": "yellow"
+    }
   },
   {
     "id": 3,
     "name": "Teclado mecánico",
     "price": 100,
-    "count": 0
+    "count": 0,
+    "img": {
+      "hasShine": false,
+      "iceCreamColor": "brown"
+    }
   },
   {
     "id": 4,
     "name": "Monitor 27 pulgadas",
     "price": 300,
-    "count": 0
+    "count": 0,
+    "img": {
+      "hasShine": true,
+      "iceCreamColor": "black"
+    }
   },
   {
     "id": 5,
     "name": "Auriculares Bluetooth",
     "price": 100,
-    "count": 0
+    "count": 0,
+    "img": {
+      "hasShine": false,
+      "iceCreamColor": "pink"
+    }
   },
   {
     "id": 6,
     "name": "SSD 1TB",
     "price": 150,
-    "count": 0
+    "count": 0,
+    "img": {
+      "hasShine": true,
+      "iceCreamColor": "blue"
+    }
   },
   {
     "id": 7,
     "name": "Impresora multifunción",
     "price": 200,
-    "count": 0
+    "count": 0,
+    "img": {
+      "hasShine": false,
+      "iceCreamColor": "green"
+    }
   },
   {
     "id": 8,
     "name": "Webcam HD",
     "price": 50,
-    "count": 0
+    "count": 0,
+    "img": {
+      "hasShine": true,
+      "iceCreamColor": "#aff"
+    }
   },
   {
     "id": 9,
     "name": "Parlantes estéreo",
     "price": 50,
-    "count": 0
+    "count": 0,
+    "img": {
+      "hasShine": false,
+      "iceCreamColor": "#fff"
+    }
   },
   {
     "id": 10,
     "name": "Silla de oficina",
     "price": 250,
-    "count": 0
+    "count": 0,
+    "img": {
+      "hasShine": true,
+      "iceCreamColor": "red"
+    }
   }
 ]
