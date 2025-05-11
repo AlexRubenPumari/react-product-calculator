@@ -3,7 +3,7 @@ import ButtonClose from './ButtonClose'
 export default function Modal ({ children, className, onClose }) {
   return (
     <div
-      className='Overlay flex items-center justify-center'
+      className='Overlay flex-center-all'
       onClick={onClose}
     >
       <div

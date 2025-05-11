@@ -2,7 +2,7 @@ import ButtonCircle from '../../components/ButtonCircle'
 
 export default function Counter({ value, onIncrease, onDecrease }) {
   return (
-    <div className='flex items-center justify-center select-none'>
+    <div className='flex-center-all select-none'>
       <ButtonCounter symbol='+' onClick={onIncrease} />
       <span className='w-12 text-center'>{ value }</span>
       <ButtonCounter symbol='-' onClick={onDecrease} />

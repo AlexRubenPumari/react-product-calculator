@@ -20,7 +20,7 @@ export default function ListOfProducts({className = ''}) {
 
 function WithoutProducts () {
   return (
-    <p className='w-full flex items-center justify-center select-none'>
+    <p className='w-full flex-center-all select-none'>
       Without any products, you should create one!
     </p>
   )

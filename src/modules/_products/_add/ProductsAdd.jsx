@@ -42,7 +42,7 @@ export default function ProductsAdd() {
   const isValidPrice = string => '.0123456789'.includes(string)
   return (
     <>
-      <main className='flex-grow flex flex-col gap-y-4 items-center justify-center py-9'>
+      <main className='flex-grow flex-center-all flex-col gap-y-4 py-9'>
         <h2 className='font-bold text-lg'>Add product</h2>
         <form action='' className='max-w-full flex flex-col gap-2'>
           <Input
@@ -68,7 +68,11 @@ export default function ProductsAdd() {
                 styles={{ iceCreamColor: 'red' }}
               />
             ) : (
-              <div>No hay img</div>
+              <div
+                className='aspect-square basis-32 flex-grow flex-center-all rounded-lg bg-white cursor-pointer'
+              >
+                No hay img
+              </div>
             )}
             <ButtonCircle
               className='ButtonPrimary'

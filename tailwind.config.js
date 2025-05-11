@@ -21,6 +21,15 @@ export default {
     require('tailwind-scrollbar')({
       nocompatible: true
     }),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.flex-center-all': {
+          'display': 'flex',
+          'justify-content': 'center',
+          'align-items': 'center',
+        },
+      })
+    }
   ],
 }
 
