@@ -7,6 +7,7 @@ import IconAdd from './components/IconAdd'
 import ProductImage from '../components/ProductImage'
 import Input from './components/Input'
 import ModalProductsImages from './components/ModalProductsImages'
+import WithoutImage from './components/WithoutImage'
 
 export default function ProductsAdd() {
   const { goIndexPage } = useContext(PageContext)
@@ -16,6 +17,9 @@ export default function ProductsAdd() {
     { value: null, error: null },
     { value: null },
   ])
+  const handleSubmit = e => {
+    e.preventDefault()
+  }
   const setProductImage = styles => {
     const newInputsStates = inputsStates.map(inputStates => ({
       ...inputStates,
@@ -42,9 +46,12 @@ export default function ProductsAdd() {
   const isValidPrice = string => '.0123456789'.includes(string)
   return (
     <>
-      <main className='flex-grow flex-center-all flex-col gap-y-4 py-9'>
+      <main className='flex-grow flex-center-all flex-col gap-y-4 py-9 Scrollbar'>
         <h2 className='font-bold text-lg'>Add product</h2>
-        <form action='' className='max-w-full flex flex-col gap-2'>
+        <form
+          className='max-w-full flex flex-col gap-2'
+          onSubmit={handleSubmit}
+        >
           <Input
             label='Name'
             placeholder='Cotton T-shirt'
@@ -68,11 +75,7 @@ export default function ProductsAdd() {
                 styles={{ iceCreamColor: 'red' }}
               />
             ) : (
-              <div
-                className='aspect-square basis-32 flex-grow flex-center-all rounded-lg bg-white cursor-pointer'
-              >
-                No hay img
-              </div>
+              <WithoutImage onClick={() => setToggleModal(true)} />
             )}
             <ButtonCircle
               className='ButtonPrimary'

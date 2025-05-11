@@ -9,7 +9,7 @@
 }
 @layer components {
   .Input {
-    @apply px-4 py-2 rounded-md;
+    @apply w-full px-4 py-2 rounded-md;
   }
   .Button {
     @apply p-3 sm:p-2 base-Button;
