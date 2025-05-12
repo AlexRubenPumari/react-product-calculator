@@ -9,9 +9,9 @@ const productsImage = [
   { id: 3, type: T.CONE, styles: { hasShine: false, iceCreamColor: '#6b3700' } },
   { id: 4, type: T.CONE, styles: { hasShine: true, iceCreamColor: '#fff' } },
 ]
-import ProductImage from '../../components/ProductImage'
+import ProductImage from './ProductImage'
 
-export default function ListOfProductImages () {
+export default function ListOfProductImages ({ onImageClick }) {
   return (
     <ul className='flex flex-wrap justify-center gap-4'>
       {productsImage.map(({ id, type, styles }, i) => (
@@ -20,7 +20,7 @@ export default function ListOfProductImages () {
             className='w-28 max-w-full cursor-pointer'
             type={type}
             styles={styles}
-            onClick={() => alert(1)}
+            onClick={() => onImageClick({ id, type, styles })}
           />
         </li>
       ))}

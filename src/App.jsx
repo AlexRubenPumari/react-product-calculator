@@ -1,10 +1,11 @@
 import ProductsProvider from './modules/_products/contexts/products'
 import Header from './components/Header'
 import ProductsIndex from './modules/_products/_index/ProductsIndex'
-import ProductsAdd from './modules/_products/_add/ProductsAdd'
+import PageAddProduct from './modules/_products/_add/PageAddProduct'
 import { useContext } from 'react'
 import { PageContext } from './contexts/page'
 import { PAGES } from './config/constants'
+import AddProductProvider from './modules/_products/_add/contexts/addProduct'
 
 export default function App () {
   const { page } = useContext(PageContext)
@@ -12,8 +13,10 @@ export default function App () {
   return (
     <ProductsProvider>
       <Header />
-      { page === PAGES.INDEX && <ProductsIndex /> }
-      { page === PAGES.ADD_PRODUCT && <ProductsAdd /> }
+      {page === PAGES.INDEX && <ProductsIndex /> }
+      {page === PAGES.ADD_PRODUCT && (
+        <AddProductProvider><PageAddProduct /></AddProductProvider>
+      )}
     </ProductsProvider>
   )
 }

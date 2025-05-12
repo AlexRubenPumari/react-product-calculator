@@ -18,7 +18,8 @@ export default function ProductsProvider({ children }) {
         filteredProducts,
         increaseProductCount,
         decreaseProductCount,
-      }}>
+      }}
+    >
       {children}
     </ProductsContext.Provider>
   )

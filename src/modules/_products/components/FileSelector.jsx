@@ -1,7 +1,7 @@
 import { cloneElement } from 'react'
-import { addArticleFor } from '../logic/main'
+import { addArticleFor } from '../logic/nouns'
 import WithoutFile from './WithoutFile'
-import ButtonCircle from '../../components/ButtonCircle'
+import ButtonCircle from './ButtonCircle'
 import IconAdd from './IconAdd'
 
 export default function FileSelector({ tag, value, children, onFocus }) {

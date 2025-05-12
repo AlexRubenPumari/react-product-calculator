@@ -5,6 +5,7 @@ export default function Input({
   error,
   placeholder,
   type = 'text',
+  min,
   value,
   onChange,
 }) {
@@ -14,10 +15,11 @@ export default function Input({
       {label && <label htmlFor={idInput}>{`${label}:`}</label>}
       <div className='mb-7 relative'>
         <input
-          value={value ?? ''}
-          type={type}
           id={idInput}
           className='Input'
+          type={type}
+          value={value ?? ''}
+          min={min}
           placeholder={placeholder}
           onChange={onChange}
         />
