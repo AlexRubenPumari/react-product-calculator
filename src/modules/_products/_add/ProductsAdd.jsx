@@ -2,12 +2,10 @@ import { useContext, useState } from 'react'
 import { PageContext } from '../../../contexts/page'
 import ButtonPrimary from '../components/ButtonPrimary'
 import ButtonSecondary from '../components/ButtonSecondary'
-import ButtonCircle from '../components/ButtonCircle'
-import IconAdd from './components/IconAdd'
 import ProductImage from '../components/ProductImage'
 import Input from './components/Input'
+import FileSelector from './components/FileSelector'
 import ModalProductsImages from './components/ModalProductsImages'
-import WithoutImage from './components/WithoutImage'
 
 export default function ProductsAdd() {
   const { goIndexPage } = useContext(PageContext)
@@ -46,7 +44,7 @@ export default function ProductsAdd() {
   const isValidPrice = string => '.0123456789'.includes(string)
   return (
     <>
-      <main className='flex-grow flex-center-all flex-col gap-y-4 py-9 Scrollbar'>
+      <main className='flex-grow flex items-center flex-col gap-y-4 py-9 Scrollbar'>
         <h2 className='font-bold text-lg'>Add product</h2>
         <form
           className='max-w-full flex flex-col gap-2'
@@ -66,29 +64,19 @@ export default function ProductsAdd() {
             error={inputsStates[1].error}
             onChange={e => handleChange(e, 1, isValidPrice)}
           />
-          <label htmlFor=''>Select image:</label>
-          <div className='flex flex-wrap items-center gap-4 justify-center'>
-            {inputsStates[2].value ? (
-              <ProductImage
-                className='basis-32 flex-grow'
-                type={1}
-                styles={{ iceCreamColor: 'red' }}
-              />
-            ) : (
-              <WithoutImage onClick={() => setToggleModal(true)} />
-            )}
-            <ButtonCircle
-              className='ButtonPrimary'
-              title='Choose a image'
-              onClick={() => setToggleModal(true)}>
-              <IconAdd className='size-4' />
-            </ButtonCircle>
-          </div>
+          <FileSelector
+            // value={{ type:1, styles: { iceCreamColor: 'black' } }}
+            value={inputsStates[2].value}
+            tag='image'
+            onFocus={() => setToggleModal(true)}
+          >
+            <ProductImage />
+          </FileSelector>
           <div className='flex flex-wrap-reverse gap-5 justify-center mt-6'>
             <ButtonSecondary className='w-24' onClick={() => goIndexPage()}>
               Cancel
             </ButtonSecondary>
-            <ButtonPrimary className='w-24' onClick={null}>
+            <ButtonPrimary className='w-24'>
               Add
             </ButtonPrimary>
           </div>
