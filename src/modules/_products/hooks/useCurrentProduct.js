@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getProductWithErrors } from '../logic/forms'
+import { isProductWithErrors } from '../logic/validations'
 
 export function useCurrentProduct() {
   const [product, setProduct] = useState({
@@ -14,14 +14,14 @@ export function useCurrentProduct() {
 
     setProduct(newProduct)
   }
-  const setProductErrorFor = (key, error) => {
-    const newProduct = structuredClone(product)
-    newProduct[key].error = error
+  // const setProductErrorFor = (key, error) => {
+  //   const newProduct = structuredClone(product)
+  //   newProduct[key].error = error
 
-    setProduct(newProduct)
-  }
+  //   setProduct(newProduct)
+  // }
   const validateCurrentProduct = () => {
-    const productWithErrors = getProductWithErrors(structuredClone(product))
+    const productWithErrors = isProductWithErrors(structuredClone(product))
     if (productWithErrors) setProduct(productWithErrors)
 
     return productWithErrors ? true : false
@@ -30,7 +30,7 @@ export function useCurrentProduct() {
   return {
     product,
     setProductValueFor,
-    setProductErrorFor,
+    // setProductErrorFor,
     validateCurrentProduct,
   }
 }

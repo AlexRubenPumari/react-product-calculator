@@ -7,7 +7,6 @@ export default function AddProductProvider({ children }) {
   const {
     product,
     setProductValueFor,
-    setProductErrorFor,
     validateCurrentProduct,
   } = useCurrentProduct()
   return (
@@ -15,7 +14,6 @@ export default function AddProductProvider({ children }) {
       value={{
         product,
         setProductValueFor,
-        setProductErrorFor,
         validateCurrentProduct,
       }}>
       {children}

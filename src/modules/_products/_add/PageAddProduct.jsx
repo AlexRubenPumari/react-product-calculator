@@ -2,17 +2,18 @@ import { useContext, useState } from 'react'
 import { PageContext } from '../../../contexts/page'
 import { AddProductContext } from './contexts/addProduct'
 import ModalOfImagesToAddProduct from './components/ModalOfImagesToAddProduct'
-import { isValidDecimal } from '../logic/forms'
+import { isValidDecimal } from '../logic/validations'
 import FormProduct from '../components/FormProduct'
 
 export default function PageAddProduct() {
-  const { goIndexPage } = useContext(PageContext)
-  const { product, setProductValueFor, setProductErrorFor, validateCurrentProduct } =
-    useContext(AddProductContext)
   const [toggleModal, setToggleModal] = useState(false)
+  const { goIndexPage } = useContext(PageContext)
+  const { product, setProductValueFor, validateCurrentProduct } =
+    useContext(AddProductContext)
+
   const handleSubmit = e => {
     e.preventDefault()
-    
+
     const hasError = validateCurrentProduct()
     console.log(product)
     console.log(hasError ? 'hay error' : 'llmar bd')
