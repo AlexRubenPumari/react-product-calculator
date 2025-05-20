@@ -24,7 +24,7 @@ export default function Input({
           onChange={onChange}
         />
         {error && (
-          <span className='absolute left-0 -bottom-6 text-sm text-red-500'>
+          <span className='LabelError'>
             {error}
           </span>
         )}

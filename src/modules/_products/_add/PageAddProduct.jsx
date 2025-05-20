@@ -7,11 +7,15 @@ import FormProduct from '../components/FormProduct'
 
 export default function PageAddProduct() {
   const { goIndexPage } = useContext(PageContext)
-  const { product, setProductValueFor } = useContext(AddProductContext)
+  const { product, setProductValueFor, setProductErrorFor, validateCurrentProduct } =
+    useContext(AddProductContext)
   const [toggleModal, setToggleModal] = useState(false)
   const handleSubmit = e => {
     e.preventDefault()
+    
+    const hasError = validateCurrentProduct()
     console.log(product)
+    console.log(hasError ? 'hay error' : 'llmar bd')
   }
   const handleChange = (e, key, validator = () => true) => {
     const string = e.target.value
@@ -26,11 +30,11 @@ export default function PageAddProduct() {
           currentProduct={product}
           onSubmit={handleSubmit}
           onCancel={() => goIndexPage()}
-          onChangeArray={[
+          onInputChange={[
             e => handleChange(e, 'name'),
             e => handleChange(e, 'price', isValidDecimal),
+            () => setToggleModal(true),
           ]}
-          onFile={() => setToggleModal(true)}
         />
       </main>
       {toggleModal && (

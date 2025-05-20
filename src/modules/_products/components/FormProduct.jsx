@@ -8,9 +8,8 @@ export default function FormProduct({
   type,
   currentProduct,
   onSubmit,
-  onFile,
   onCancel,
-  onChangeArray,
+  onInputChange,
 }) {
   return (
     <form className='max-w-full flex flex-col gap-2' onSubmit={onSubmit}>
@@ -19,7 +18,7 @@ export default function FormProduct({
         placeholder='Cotton T-shirt'
         value={currentProduct.name.value}
         error={currentProduct.name.error}
-        onChange={onChangeArray[0]}
+        onChange={onInputChange[0]}
       />
       <Input
         label='Price'
@@ -27,13 +26,14 @@ export default function FormProduct({
         min={0}
         value={currentProduct.price.value}
         error={currentProduct.price.error}
-        onChange={onChangeArray[1]}
+        onChange={onInputChange[1]}
       />
       <FileSelector
         // value={{ type:1, styles: { iceCreamColor: 'black' } }}
         value={currentProduct.img.value}
         tag='image'
-        onFocus={onFile}>
+        error={currentProduct.img.error}
+        onFocus={onInputChange[2]}>
         <ProductImage />
       </FileSelector>
       <div className='flex flex-wrap-reverse gap-5 justify-center mt-6'>
