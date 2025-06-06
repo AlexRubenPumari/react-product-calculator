@@ -18,7 +18,7 @@ export default function Footer() {
         <ButtonCircle
           className='ButtonPrimary-bold p-5 sm:p-4 absolute left-1/2 -translate-x-1/2 -translate-y-1/2'
           onClick={() => setToggleModal(true)}
-          disabled={filteredProducts.length === 0}
+          disabled={!filteredProducts || filteredProducts.length === 0}
         >
           <IconCalculator className='w-7' />
         </ButtonCircle>

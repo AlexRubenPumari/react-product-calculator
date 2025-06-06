@@ -1,31 +1,24 @@
 import { useContext } from 'react'
 import { ProductsContext } from '../../contexts/products'
 import CardProduct from './CardProduct'
+import Spinner from './Spinner'
+import WithoutProducts from './WithoutProducts'
 
-export default function ListOfProducts({className = ''}) {
+export default function ListOfProducts ({ className = '' }) {
   const { products } = useContext(ProductsContext)
-
+  const divClassName = `${className}${products?.length > 0 ? '' : ' flex-center-all'}` 
   return (
-    <div className={className}>
+    <div className={divClassName}>
+      { products === null && <Spinner /> }
+      { products?.length === 0 && <WithoutProducts /> }
       {
-        products?.length === 0 ? (
-          <WithoutProducts />
-        ) : (
+        (products?.length > 0 && products !== null) && (
           <><Products products={products} /><GhostProducts /></>
         )
       }
     </div>
   )
 }
-
-function WithoutProducts () {
-  return (
-    <p className='w-full flex-center-all select-none'>
-      Without any products, you should create one!
-    </p>
-  )
-}
-
 function Products ({ products }) {
   return products.map(({ id, name, price, count, img }) => (
     <CardProduct
