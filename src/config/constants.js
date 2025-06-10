@@ -7,3 +7,9 @@ export const PAGES = {
   EDIT_IMG: 5,
   DELETE_IMG: 6,
 }
+export const arrayTableHeader = [
+  { value: 'name' },
+  { value: 'price', className: 'hidden sm:table-cell' },
+  { value: 'count', className: 'hidden sm:table-cell' },
+  { value: 'total' },
+]
