@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import ButtonMenu from './ButtonMenu'
-import SidebarMain from './SidebarMain'
+import SidebarController from './SidebarController'
 
 export default function Header() {
   const [toggle, setToggle] = useState(false)
@@ -14,7 +14,7 @@ export default function Header() {
         />
         <h1 className='text-2xl font-bold'>Sales Calculator</h1>
       </header>
-      { toggle && <SidebarMain onClose={() => setToggle(false)} /> }
+      { toggle && <SidebarController onClose={() => setToggle(false)} /> }
     </>
   )
 }

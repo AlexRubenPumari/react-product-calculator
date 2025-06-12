@@ -1,13 +1,13 @@
 import IndexPage from './components/common/IndexPage'
 import ProductsProvider from './contexts/products/products'
-import PageProvider from './contexts/common/page'
+import ModalProvider from './contexts/common/modal'
 
 export default function App() {
   return (
     <ProductsProvider>
-      <PageProvider>
+      <ModalProvider>
         <IndexPage />
-      </PageProvider>
+      </ModalProvider>
     </ProductsProvider>
   )
 }

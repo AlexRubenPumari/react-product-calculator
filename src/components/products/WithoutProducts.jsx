@@ -1,14 +1,14 @@
-import WithoutResults from '../common/WithoutResults'
 import { useContext } from 'react'
-import { PageContext } from '../../contexts/common/page'
+import { ModalContext } from '../../contexts/common/modal'
+import WithoutResults from '../common/WithoutResults'
 
 export default function WithoutProducts() {
-  const { goAddProductPage } = useContext(PageContext)
+  const { openAddProductModal } = useContext(ModalContext)
 
   return (
     <WithoutResults
       className='flex-center-all flex-col gap-6'
-      onClick={() => goAddProductPage()}
+      onClick={() => openAddProductModal()}
     >
       <p className='w-5/6 text-center'>
         Without any products, you should create one!

@@ -14,7 +14,7 @@ export default function Sidebar({ onClose, items, onClicks }) {
               <li
                 key={i}
                 className='px-4 py-1 hover:bg-black/10 transition-colors cursor-pointer whitespace-nowrap'
-                onClick={onClicks[i]}
+                onClick={() => (onClose(), onClicks[i]())}
               >
                   {item}
               </li>

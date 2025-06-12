@@ -1,8 +1,12 @@
-import Footer from './Footer'
-import ListOfProducts from '../products/ListOfProducts'
+import { useModalContext } from '../../hooks/common/useModalContext'
+import { MODAL as M } from '../../config/constants'
 import Header from './Header'
+import ListOfProducts from '../products/ListOfProducts'
+import ModalAddProduct from '../products/ModalAddProduct'
+import Footer from './Footer'
 
 export default function IndexPage() {
+  const { modal, closeModal } = useModalContext()
   return (
     <>
       <Header />
@@ -12,6 +16,12 @@ export default function IndexPage() {
         />
       </main>
       <Footer />
+      {modal && <ModalController type={modal} onClose={() => closeModal()} />}
     </>
   )
+}
+function ModalController ({ type, onClose }) {
+  if (type === M.ADD_PRODUCT) {
+    return <ModalAddProduct onClose={onClose} />
+  }
 }
