@@ -1,6 +1,6 @@
-const DB_NAME = 'ReactAppDB'
-const DB_VERSION = 1
-const PRODUCTS_STORE_NAME = 'products'
+export const DB_NAME = 'ReactAppDB'
+export const DB_VERSION = 1
+export const PRODUCTS_STORE_NAME = 'products'
 
 let db
 
