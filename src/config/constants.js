@@ -1,12 +1,3 @@
-export const PAGES = {
-  INDEX: 0,
-  ADD_PRODUCT: 1,
-  EDIT_PRODUCT: 2,
-  DELETE_PRODUCT: 3,
-  ADD_IMG: 4,
-  EDIT_IMG: 5,
-  DELETE_IMG: 6,
-}
 export const arrayTableHeader = [
   { value: 'name' },
   { value: 'price', className: 'hidden sm:table-cell' },
@@ -21,3 +12,4 @@ export const MODAL = {
   EDIT_IMG: 5,
   DELETE_IMG: 6,
 }
+export const PRODUCT_KEYS = ['name', 'price', 'img']

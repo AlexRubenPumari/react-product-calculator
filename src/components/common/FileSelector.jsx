@@ -3,14 +3,15 @@ import { addArticleFor } from '../../logic/common/utilities'
 import { IconEdit, IconAdd } from './Icons'
 import ButtonCircle from './ButtonCircle'
 
-export default function FileSelector({ tag, value, error, children, onFocus }) {
-  const formatedTag = addArticleFor(tag)
+export default function FileSelector({ label, value, error, children, onFocus, className }) {
+  const formatedTag = addArticleFor(label).toLowerCase()
   const clonedChildren = cloneElement(children, { className: 'basis-32 flex-grow cursor-pointer', onClick: onFocus, ...value })
+  const classNameDiv = className + ' flex-center-all flex-wrap gap-4 relative'
 
   return (
     <>
-      {tag && <label htmlFor=''>{`Select ${formatedTag}:`}</label>}
-      <div className='flex-center-all flex-wrap gap-4 relative'>
+      {label && <label htmlFor=''>{`Select ${formatedTag}:`}</label>}
+      <div className={classNameDiv}>
         {value ? (
           clonedChildren
         ) : (

@@ -3,6 +3,7 @@ import { useId } from 'react'
 export default function Input({
   label,
   error,
+  name,
   placeholder,
   type = 'text',
   min,
@@ -18,6 +19,7 @@ export default function Input({
         <input
           id={idInput}
           className='Input'
+          name={name}
           type={type}
           value={value ?? ''}
           min={min}
