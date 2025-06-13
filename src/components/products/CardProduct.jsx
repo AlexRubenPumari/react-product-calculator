@@ -3,9 +3,8 @@ import { ProductsContext } from '../../contexts/products/products'
 import ProductImage from './ProductImage'
 import Counter from '../common/Counter'
 
-export default function CardProduct (
-  { className, id, name, img, price, count }
-) {
+export default function CardProduct ({ className, product }) {
+  const { id, name, img, price, count } = product
   const { products, increaseProductCount, decreaseProductCount } =
     useContext(ProductsContext)
   const cardClassName = `flex flex-col items-center${

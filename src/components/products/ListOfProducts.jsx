@@ -5,41 +5,36 @@ import Spinner from '../common/Spinner'
 import WithoutProducts from './WithoutProducts'
 
 export default function ListOfProducts ({ className = '' }) {
-  const { products } = useContext(ProductsContext)
+  const { products, isLoading } = useContext(ProductsContext)
+  const hasProducts = products?.length > 0
+  const withoutProducts = products?.length <= 0 && !isLoading
   const divClassName = `${className}${products?.length > 0 ? '' : ' flex-center-all'}` 
   return (
     <div className={divClassName}>
-      { products === null && <Spinner /> }
-      { products?.length === 0 && <WithoutProducts /> }
-      {
-        (products?.length > 0 && products !== null) && (
-          <><Products products={products} /><GhostProducts /></>
-        )
-      }
+      { isLoading && <Spinner /> }
+      { withoutProducts && <WithoutProducts /> }
+      { hasProducts && <><Products products={products} /><GhostProducts /></> }
     </div>
   )
 }
 function Products ({ products }) {
-  return products.map(({ id, name, price, count, img }) => (
+  return products.map(product => (
     <CardProduct
-      key={id}
-      id={id}
-      img={img}
+      key={product.id}
       className='basis-44 flex-grow'
-      name={name}
-      price={price}
-      count={count}
+      product={product}
     />
   ))
 }
   
 function GhostProducts () {
   // GhostProducts: add flex items to fix the auto-fill problem in flexbox
+  const className = 'basis-44 flex-grow'
   return (
     <>
-      <div className='basis-44 flex-grow'></div>
-      <div className='basis-44 flex-grow'></div>
-      <div className='basis-44 flex-grow'></div>
+      <div className={className} />
+      <div className={className} />
+      <div className={className} />
     </>
   )
 }
