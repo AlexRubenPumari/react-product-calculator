@@ -1,8 +1,7 @@
 import { cloneElement } from 'react'
-import { addArticleFor } from '../../logic/nouns'
+import { addArticleFor } from '../../logic/common/utilities'
+import { IconEdit, IconAdd } from './Icons'
 import ButtonCircle from './ButtonCircle'
-import IconAdd from '../IconAdd'
-import IconEdit from '../IconEdit'
 
 export default function FileSelector({ tag, value, error, children, onFocus }) {
   const formatedTag = addArticleFor(tag)

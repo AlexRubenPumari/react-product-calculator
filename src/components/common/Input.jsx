@@ -6,6 +6,7 @@ export default function Input({
   placeholder,
   type = 'text',
   min,
+  max,
   value,
   onChange,
 }) {
@@ -20,6 +21,7 @@ export default function Input({
           type={type}
           value={value ?? ''}
           min={min}
+          max={max}
           placeholder={placeholder}
           onChange={onChange}
         />

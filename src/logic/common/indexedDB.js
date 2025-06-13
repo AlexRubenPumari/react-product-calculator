@@ -68,5 +68,3 @@ export const getAllItems = async (storeName) => {
     request.onerror = e => reject(e.target.errorCode)
   })
 }
-
-// Puedes añadir funciones para updateItem, deleteItem, etc.

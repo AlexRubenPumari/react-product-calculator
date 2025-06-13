@@ -1,8 +1,8 @@
-import ButtonPrimary from './ButtonPrimary'
-import ButtonSecondary from './ButtonSecondary'
-import ProductImage from '../ProductImage'
+import ButtonPrimary from '../common/ButtonPrimary'
+import ButtonSecondary from '../common/ButtonSecondary'
+import ProductImage from './ProductImage'
 import Input from '../common/Input'
-import FileSelector from './FileSelector'
+import FileSelector from '../common/FileSelector'
 
 export default function FormProduct({
   type,
