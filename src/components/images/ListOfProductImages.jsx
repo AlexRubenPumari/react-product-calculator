@@ -1,20 +1,19 @@
-const T = {
-  CONE: 1,
-  TUB: 2,
-  LOLLY: 3,
-}
-const productsImage = [
-  { id: 1, type: T.CONE, styles: { iceCreamColor: 'red' } },
-  { id: 2, type: T.CONE, styles: { hasShine: true, iceCreamColor: '#6b3700' } },
-  { id: 3, type: T.CONE, styles: { hasShine: false, iceCreamColor: '#6b3700' } },
-  { id: 4, type: T.CONE, styles: { hasShine: true, iceCreamColor: '#fff' } },
-]
-import ProductImage from '../ProductImage'
+import { useFetch } from '../../hooks/common/useFetch'
+import { getAllItems, IMAGES_STORE_NAME } from '../../logic/common/indexedDB'
+import ProductImage from './ProductImage'
+import Spinner from '../common/Spinner'
 
-export default function ListOfProductImages ({ onImageClick }) {
+export default function ListOfProductImages({ onImageClick }) {
+  const { data, error, isLoading } = useFetch(() => getAllItems(IMAGES_STORE_NAME))
+  if (isLoading) return <Spinner />
+  if (error) return <p>Error</p>
+  return <List productImages={data} onImageClick={onImageClick} />
+}
+
+function List({ productImages, onImageClick }) {
   return (
     <ul className='flex flex-wrap justify-center gap-4'>
-      {productsImage.map(({ id, type, styles }, i) => (
+      {productImages?.map(({ id, type, styles }, i) => (
         <li key={id}>
           <ProductImage
             className='w-28 max-w-full cursor-pointer'

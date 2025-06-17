@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react'
 export function useForm (initialValues, keyloggers, validations) {
   const [values, setValues] = useState(initialValues)
   const [errors, setErrors] = useState({})
-  const [isValid, setIsValid] = useState(false)
+  // const [isValid, setIsValid] = useState(false)
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target
@@ -11,28 +11,28 @@ export function useForm (initialValues, keyloggers, validations) {
     if (keyloggers[name] && !keyloggers[name]?.(lastChar)) return
 
     setValues(prevValues => ({ ...prevValues, [name]: value }))
+    setErrors(prevErrors => ({ ...prevErrors, [name]: null }))
   }, [])
 
-  // Función para validar todo el formulario
   const validateForm = useCallback(() => {
-    let newErrors = {};
-    let formIsValid = true;
+    let newErrors = {}
+    let formIsValid = true
 
     for (const fieldName in validations) {
-      const validate = validations[fieldName];
-      const value = values[fieldName];
-      const error = validate(value, values); // Pasa `values` por si la validación depende de otros campos
+      const validate = validations[fieldName]
+      const value = values[fieldName]
+      const error = validate(value)
 
       if (error) {
-        newErrors[fieldName] = error;
-        formIsValid = false;
+        newErrors[fieldName] = error
+        formIsValid = false
       }
     }
 
-    setErrors(newErrors);
-    setIsValid(formIsValid);
-    return formIsValid;
-  }, [values, validations]);
+    setErrors(newErrors)
+    // setIsValid(formIsValid)
+    return formIsValid
+  }, [values, validations])
 
 
   return {
@@ -40,6 +40,6 @@ export function useForm (initialValues, keyloggers, validations) {
     errors,
     handleChange,
     validateForm,
-    isValid,
+    // isValid,
   }
 }
