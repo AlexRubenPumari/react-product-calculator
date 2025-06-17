@@ -6,7 +6,7 @@ export default function WithoutResults ({ className, onClick, children }) {
         onClick={onClick}
         className='Button ButtonPrimary'
       >
-        Añadir producto
+        Add product
       </button>
     </div>
   )

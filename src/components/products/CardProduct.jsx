@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { ProductsContext } from '../../contexts/products/products'
-import ProductImage from './ProductImage'
+import ProductImage from '../images/ProductImage'
 import Counter from '../common/Counter'
 
 export default function CardProduct ({ className, product }) {
