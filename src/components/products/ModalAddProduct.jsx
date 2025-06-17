@@ -3,8 +3,8 @@ import FormProduct from './FormProduct'
 import { useProductForm } from '../../hooks/products/useProductForm'
 
 export default function ModalAddProduct({ onClose }) {
-  const { values, errors, handleChange, validateForm } = useProductForm()
-  
+  const { values, errors, handleChange, handleImageChange, validateForm } = useProductForm()
+
   const handleSubmit = e => {
     e.preventDefault()
     const hasError = validateForm()
@@ -20,7 +20,7 @@ export default function ModalAddProduct({ onClose }) {
         onChange={handleChange}
         onSubmit={handleSubmit}
         onCancel={onClose}
-      />  
+      />
     </Modal>
   )
 }

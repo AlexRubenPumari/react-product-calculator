@@ -3,7 +3,6 @@ import { useState, useCallback } from 'react'
 export function useForm (initialValues, keyloggers, validations) {
   const [values, setValues] = useState(initialValues)
   const [errors, setErrors] = useState({})
-  // const [isValid, setIsValid] = useState(false)
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target
@@ -30,7 +29,6 @@ export function useForm (initialValues, keyloggers, validations) {
     }
 
     setErrors(newErrors)
-    // setIsValid(formIsValid)
     return formIsValid
   }, [values, validations])
 
@@ -40,6 +38,7 @@ export function useForm (initialValues, keyloggers, validations) {
     errors,
     handleChange,
     validateForm,
-    // isValid,
+    setValues,
+    setErrors,
   }
 }

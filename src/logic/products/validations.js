@@ -10,5 +10,5 @@ export function isValidProductPrice (productPrice) {
 }
 
 export function isValidProductImg (productImg) {
-  if (productImg) return 'Image field is required'
+  if (!productImg) return 'Image field is required'
 }

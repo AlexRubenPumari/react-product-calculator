@@ -6,7 +6,7 @@ import ButtonCircle from './ButtonCircle'
 export default function FileSelector({ label, value, error, children, onClick, className }) {
   const formatedTag = addArticleFor(label).toLowerCase()
   const clonedChildren = cloneElement(children, { className: 'basis-32 max-w-48 flex-grow cursor-pointer', onClick: onClick, ...value })
-  const classNameDiv = className + ' flex-center-all flex-wrap gap-4 relative mb-8'
+  const classNameDiv = className + ' flex-center-all flex-wrap gap-4 relative mb-8 select-none'
 
   return (
     <>
