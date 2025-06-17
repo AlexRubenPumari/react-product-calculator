@@ -1,6 +1,9 @@
+import { DEFAULT_PRODUCT_IMAGES } from '../../config/constants'
+
 export const DB_NAME = 'ReactAppDB'
-export const DB_VERSION = 1
+export const DB_VERSION = 4
 export const PRODUCTS_STORE_NAME = 'products'
+export const IMAGES_STORE_NAME = 'images'
 
 let db
 
@@ -20,6 +23,15 @@ export const openDB = () => {
         db.createObjectStore(
           PRODUCTS_STORE_NAME, { keyPath: 'id', autoIncrement: true }
         )
+      }
+      if (!db.objectStoreNames.contains(IMAGES_STORE_NAME)) {
+        const objectStore = db.createObjectStore(
+          IMAGES_STORE_NAME, { keyPath: 'id', autoIncrement: true }
+        )
+
+        objectStore.transaction.oncomplete = (e) => {
+          addItems(DEFAULT_PRODUCT_IMAGES, IMAGES_STORE_NAME)
+        }
       }
     }
 
@@ -50,6 +62,32 @@ export const addItem = async (item, storeName) => {
     const request = store.add(item)
     request.onsuccess = () => resolve(request.result)
     request.onerror = e => reject(e.target.errorCode)
+  })
+}
+
+export const addItems = async (items, storeName) => {
+  const dbInstance = await openDB()
+  const transaction = dbInstance.transaction([storeName], 'readwrite')
+  const store = transaction.objectStore(storeName)
+
+  return new Promise((resolve, reject) => {
+    const requests = []
+
+    items.forEach(item => {
+      const request = store.add(item)
+      requests.push(request)
+
+      request.onerror = e => reject(e.target.errorCode)
+    })
+
+    transaction.oncomplete = () => {
+      const results = requests.map(req => req.result)
+      resolve(results)
+    }
+
+    transaction.onerror = e => {
+      reject(e.target.errorCode);
+    }
   })
 }
 
