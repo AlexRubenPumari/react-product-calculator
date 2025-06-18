@@ -14,6 +14,7 @@ export default function FormProduct({
   onSubmit,
   onCancel,
   onChange,
+  onImageChange
 }) {
   const [toggleSection, setToggleSection] = useState(null)
   return !toggleSection ? (
@@ -27,15 +28,18 @@ export default function FormProduct({
       onCancel={onCancel}
     />
   ) : (
-    <SectionOfImages onCancel={() => setToggleSection(false)} />
+    <SectionOfImages
+      onCancel={() => setToggleSection(false)}
+      onImageClick={e => (onImageChange(e), setToggleSection(null))}  
+    />
   )
 }
 
-function SectionOfImages ({ onCancel }) {
+function SectionOfImages ({ onImageClick, onCancel }) {
   return (
     <div className='flex flex-col items-center gap-4 px-2'>
       <p className='w-full text-left'>Select an image:</p>
-      <ListOfProductImages />
+      <ListOfProductImages onImageClick={onImageClick} />
       <ButtonPrimary
         className='w-24'
         onClick={onCancel}
