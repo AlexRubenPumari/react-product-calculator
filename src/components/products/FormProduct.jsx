@@ -77,13 +77,12 @@ function Form({ type, values, errors, onChange, onSelectImageClick, onSubmit, on
           onChange={onChange}
         />
         <FileSelector
+          Display={ProductImage}
           label='Image'
           value={values[IMAGE]}
           error={errors[IMAGE]}
           onClick={onSelectImageClick}
-        >
-          <ProductImage />
-        </FileSelector>
+        />
         <div className='flex flex-wrap-reverse gap-5 justify-center mt-6'>
           <ButtonSecondary className='w-24' onClick={onCancel}>
             Cancel

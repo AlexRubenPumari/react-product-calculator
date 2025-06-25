@@ -14,5 +14,5 @@ export function useFetch(asyncFetchFn) {
       .finally(() => setIsLoading(false))
   }, [])
 
-  return { data, isLoading, error }
+  return { data, isLoading, error, setData }
 }

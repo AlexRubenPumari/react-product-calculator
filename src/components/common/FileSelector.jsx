@@ -1,19 +1,23 @@
-import { cloneElement } from 'react'
 import { addArticleFor } from '../../logic/common/utilities'
 import { IconEdit, IconAdd } from './Icons'
 import ButtonCircle from './ButtonCircle'
 
-export default function FileSelector({ label, value, error, children, onClick, className }) {
+export default function FileSelector({
+  Display, label, value, error, onClick, className = ''
+}) {
   const formatedTag = addArticleFor(label).toLowerCase()
-  const clonedChildren = cloneElement(children, { className: 'basis-32 max-w-48 flex-grow cursor-pointer', onClick: onClick, ...value })
-  const classNameDiv = className + ' flex-center-all flex-wrap gap-4 relative mb-8 select-none'
+  const classNameDiv = `flex-center-all flex-wrap gap-4 relative mb-8 select-none ${className}`
 
   return (
     <>
       {label && <span>{`Select ${formatedTag}:`}</span>}
       <div className={classNameDiv}>
         {value ? (
-          clonedChildren
+          <Display
+            style={value}
+            className='basis-32 max-w-48 flex-grow cursor-pointer'
+            onClick={onClick}  
+          />
         ) : (
           <WithoutFile formatedTag={formatedTag} onClick={onClick} />
         )}

@@ -15,7 +15,7 @@
     @apply absolute left-0 -bottom-6 text-sm text-red-500 font-bold;
   }
   .Button {
-    @apply p-3 sm:p-2 base-Button;
+    @apply p-4 sm:p-3 base-Button;
   }
   .ButtonPrimary {
     @apply bg-lime-600 hover:bg-lime-700 text-white font-bold rounded-lg;

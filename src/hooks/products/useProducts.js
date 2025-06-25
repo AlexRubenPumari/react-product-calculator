@@ -1,18 +1,24 @@
 import { useFetch } from '../common/useFetch'
-import { changeProductCount } from '../../logic/products/products'
-import { getAllItems, PRODUCTS_STORE_NAME } from '../../logic/common/indexedDB'
+import { getAllProducts } from '../../services/products'
 
 export default function useProducts() {
-  const { data: products, error, isLoading } = useFetch(
-    () => getAllItems(PRODUCTS_STORE_NAME)
-  )  
+  const { data: products, error, isLoading, setData } = useFetch(getAllProducts)  
   const filteredProducts = products?.filter(product => product.count > 0)
 
-  const increaseProductCount = (id, products) =>
-    setProducts(changeProductCount({ id, products, step: 1, max: 10 }))
+  const increaseProductCount = (id) => {
+    setData(prevValues => prevValues.map(value => {
+      if (value.id === id) return { ...value, count: value.count + 1 }
 
-  const decreaseProductCount = (id, products) =>
-    setProducts(changeProductCount({ id, products, step: -1, min: 0 }))
+      return value
+    }))
+  }
+  const decreaseProductCount = (id) => {
+    setData(prevValues => prevValues.map(value => {
+      if (value.id === id) return { ...value, count: value.count - 1 }
+
+      return value
+    }))
+  }
 
   return {
     products,
