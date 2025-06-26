@@ -26,3 +26,31 @@ export const DEFAULT_PRODUCT_IMAGES = [
   { type: ICE_CREAM_TYPES.CONE, styles: { hasShine: false, iceCreamColor: '#6b3700' } },
   { type: ICE_CREAM_TYPES.CONE, styles: { hasShine: true, iceCreamColor: '#fff' } },
 ]
+
+
+// const productInState = {
+//   id: 1,
+//   name: 'Helado de DDL',
+//   price: '1000',
+//   count,
+//   img: {
+//     id, //opcional
+//     type,
+//     styles: { iceCreamColor, hasShine }
+//   },
+// }
+// const productInBD = {
+//   id,
+//   name,
+//   price,
+//   idImg,
+// }
+
+// //Tambien en BD
+// const imgInState = {
+//   id,
+//   type
+//   style: {
+//     //...
+//   }
+// }

@@ -13,7 +13,7 @@ export default function ListOfProductImages({ onImageClick }) {
 function List({ productImages, onImageClick }) {
   return (
     <ul className='flex flex-wrap justify-center gap-4'>
-      {productImages?.map(({ id, type, styles }, i) => (
+      {productImages?.map(({ id, type, styles }) => (
         <li key={id}>
           <ProductImage
             className='w-28 max-w-full cursor-pointer'

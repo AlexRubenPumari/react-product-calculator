@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { ProductsContext } from '../../contexts/products/products'
 import { getTotal } from '../../logic/products/products'
 import Modal from '../common/Modal'
-import ButtonPrimary from '../common/Modal'
+import ButtonPrimary from '../common/ButtonPrimary'
 import TableOfProducts from './TableOfProducts'
 
 export default function ModalProductsSummary({ onClose }) {

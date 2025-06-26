@@ -1,6 +1,7 @@
 export default function ProductImage({
   className = '',
-  styles = { hasShine: false, iceCreamColor: 'red' },
+  type,
+  styles = { hasShine: false, iceCreamColor: 'yellow' },
   onClick,
 }) {
   const { hasShine, iceCreamColor } = styles

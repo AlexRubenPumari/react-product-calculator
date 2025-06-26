@@ -52,7 +52,6 @@ function SectionOfImages ({ onImageClick, onCancel }) {
 
 function Form({ type, values, errors, onChange, onSelectImageClick, onSubmit, onCancel }) {
   const [NAME, PRICE, IMAGE] = PRODUCT_KEYS
-
   return (
     <>
       {type && <h3 className='font-bold text-center uppercase'>{`${type} product`}</h3>}

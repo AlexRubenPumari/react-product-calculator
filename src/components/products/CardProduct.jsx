@@ -5,20 +5,20 @@ import Counter from '../common/Counter'
 
 export default function CardProduct ({ className, product }) {
   const { id, name, img, price, count } = product
-  const { products, increaseProductCount, decreaseProductCount } =
+  const { increaseProductCount, decreaseProductCount } =
     useContext(ProductsContext)
   const cardClassName = `flex flex-col items-center${
     className ? ` ${className}` : ''
   }`
   return (
     <div className={cardClassName}>
-      <ProductImage className='size-40' styles={img} />
+      <ProductImage className='size-40' styles={img?.styles} type={img?.type} />
       <h3 className='flex-grow font-bold text-center'>{name}</h3>
       <span>{`$ ${price}`}</span>
       <Counter
         value={count}
-        onIncrease={() => increaseProductCount(id, products)}
-        onDecrease={() => decreaseProductCount(id, products)}
+        onIncrease={() => increaseProductCount(id)}
+        onDecrease={() => decreaseProductCount(id)}
       />
     </div>
   )

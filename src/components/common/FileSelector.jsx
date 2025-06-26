@@ -7,14 +7,13 @@ export default function FileSelector({
 }) {
   const formatedTag = addArticleFor(label).toLowerCase()
   const classNameDiv = `flex-center-all flex-wrap gap-4 relative mb-8 select-none ${className}`
-
   return (
     <>
       {label && <span>{`Select ${formatedTag}:`}</span>}
       <div className={classNameDiv}>
         {value ? (
           <Display
-            style={value}
+            {...value}
             className='basis-32 max-w-48 flex-grow cursor-pointer'
             onClick={onClick}  
           />

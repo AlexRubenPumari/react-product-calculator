@@ -1,23 +1,32 @@
 import { useFetch } from '../common/useFetch'
-import { getAllProducts } from '../../services/products'
+import { getAllProducts, addProduct } from '../../services/products'
+import { mapProductsFromStorageToUI, prepareProductForStorage, prepareProductForUI } from '../../adapters/products'
 
 export default function useProducts() {
-  const { data: products, error, isLoading, setData } = useFetch(getAllProducts)  
+  const { data: products, error, isLoading, setData: setProduct } = useFetch(
+    () => getAllProducts().then(mapProductsFromStorageToUI)
+  )  
   const filteredProducts = products?.filter(product => product.count > 0)
 
-  const increaseProductCount = (id) => {
-    setData(prevValues => prevValues.map(value => {
+  const increaseProductCount = id => {
+    setProduct(prevValues => prevValues.map(value => {
       if (value.id === id) return { ...value, count: value.count + 1 }
 
       return value
     }))
   }
-  const decreaseProductCount = (id) => {
-    setData(prevValues => prevValues.map(value => {
+  const decreaseProductCount = id => {
+    setProduct(prevValues => prevValues.map(value => {
       if (value.id === id) return { ...value, count: value.count - 1 }
 
       return value
     }))
+  }
+  const addNewProduct = (productValues) => {
+    return addProduct(prepareProductForStorage(productValues))
+      .then(id => setProduct(
+        prevValues => [prepareProductForUI(id, productValues), ...prevValues]
+      ))
   }
 
   return {
@@ -25,6 +34,7 @@ export default function useProducts() {
     error,
     isLoading,
     filteredProducts,
+    addNewProduct,
     increaseProductCount,
     decreaseProductCount,
   }

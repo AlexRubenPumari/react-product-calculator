@@ -106,3 +106,15 @@ export const getAllItems = async (storeName) => {
     request.onerror = e => reject(e.target.errorCode)
   })
 }
+
+export const getItemById = async (id, storeName) => {
+  const dbInstance = await openDB()
+  const transaction = dbInstance.transaction([storeName])
+  const store = transaction.objectStore(storeName)
+  
+  return new Promise((resolve, reject) => {
+    const request = store.get(id)
+    request.onsuccess = () => resolve(request.result)
+    request.onerror = e => reject(e.target.errorCode)
+  })
+}
