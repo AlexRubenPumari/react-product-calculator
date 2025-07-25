@@ -15,7 +15,7 @@ function ButtonCounter ({ symbol, onClick }) {
       className='ButtonPrimary'
       onClick={onClick}
     >
-      <span className='block size-4 leading-3'>{ symbol }</span>
+      <span className='block size-4 leading-3'>{symbol}</span>
     </ButtonCircle>
   )
 }

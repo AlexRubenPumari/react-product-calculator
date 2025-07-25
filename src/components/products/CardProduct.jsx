@@ -1,15 +1,13 @@
-import { useContext } from 'react'
-import { ProductsContext } from '../../contexts/products/products'
+import { useProductsContext } from '../../contexts/products/products'
+import { classNames } from '../../logic/common/classNames'
 import ProductImage from '../images/ProductImage'
 import Counter from '../common/Counter'
 
 export default function CardProduct ({ className, product }) {
   const { id, name, img, price, count } = product
-  const { increaseProductCount, decreaseProductCount } =
-    useContext(ProductsContext)
-  const cardClassName = `flex flex-col items-center${
-    className ? ` ${className}` : ''
-  }`
+  const { increaseProductCount, decreaseProductCount } = useProductsContext()
+  const cardClassName = classNames('flex flex-col items-center', className)
+
   return (
     <div className={cardClassName}>
       <ProductImage className='size-40' styles={img?.styles} type={img?.type} />

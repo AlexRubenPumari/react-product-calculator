@@ -1,41 +1,32 @@
 import { useFetch } from '../common/useFetch'
 import { getAllProducts, addProduct } from '../../services/products'
 import { mapProductsFromStorageToUI, prepareProductForStorage, prepareProductForUI } from '../../adapters/products'
+import { clamp } from '../../logic/common/utilities'
 
 export default function useProducts() {
-  const { data: products, error, isLoading, setData: setProduct } = useFetch(
+  const { data: products, error, isLoading, setData: setProducts } = useFetch(
     () => getAllProducts().then(mapProductsFromStorageToUI)
-  )  
-  const filteredProducts = products?.filter(product => product.count > 0)
+  )
 
-  const increaseProductCount = id => {
-    setProduct(prevValues => prevValues.map(value => {
-      if (value.id === id) return { ...value, count: value.count + 1 }
-
-      return value
-    }))
+  const updateCount = (id, delta) => {
+    setProducts(prev => prev.map(p =>
+      p.id === id ? { ...p, count: clamp({ value: p.count + delta, min: 0 }) } : p
+    ))
   }
-  const decreaseProductCount = id => {
-    setProduct(prevValues => prevValues.map(value => {
-      if (value.id === id) return { ...value, count: value.count - 1 }
 
-      return value
-    }))
-  }
-  const addNewProduct = (productValues) => {
-    return addProduct(prepareProductForStorage(productValues))
-      .then(id => setProduct(
-        prevValues => [prepareProductForUI(id, productValues), ...prevValues]
-      ))
+  const addNewProduct = values => {
+    const toStore = prepareProductForStorage(values)
+    return addProduct(toStore).then(id =>
+      setProducts(prev => [prepareProductForUI(id, values), ...prev])
+    )
   }
 
   return {
-    products,
+    products: products ?? [],
     error,
     isLoading,
-    filteredProducts,
     addNewProduct,
-    increaseProductCount,
-    decreaseProductCount,
+    increaseProductCount: id => updateCount(id, 1),
+    decreaseProductCount: id => updateCount(id, -1)
   }
 }

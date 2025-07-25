@@ -1,19 +1,20 @@
-import { useContext } from 'react'
-import { ProductsContext } from '../../contexts/products/products'
+import { useProductsContext } from '../../contexts/products/products'
+import { classNames } from '../../logic/common/classNames'
 import CardProduct from './CardProduct'
 import Spinner from '../common/Spinner'
 import WithoutProducts from './WithoutProducts'
 
-export default function ListOfProducts ({ className = '' }) {
-  const { products, isLoading } = useContext(ProductsContext)
-  const hasProducts = products?.length > 0
-  const withoutProducts = products?.length <= 0 && !isLoading
-  const divClassName = `${className}${products?.length > 0 ? '' : ' flex-center-all'}` 
+export default function ListOfProducts ({ className }) {
+  const { products, isLoading } = useProductsContext()
+  const hasProducts = products.length > 0
+  const withoutProducts = !hasProducts && !isLoading
+  const divClassName = classNames(className, !hasProducts && 'flex-center-all')
+
   return (
     <div className={divClassName}>
-      { isLoading && <Spinner /> }
-      { withoutProducts && <WithoutProducts /> }
-      { hasProducts && <><Products products={products} /><GhostProducts /></> }
+      {withoutProducts && <WithoutProducts />}
+      {isLoading && <Spinner />}
+      {hasProducts && <><Products products={products} /><GhostProducts /></>}
     </div>
   )
 }

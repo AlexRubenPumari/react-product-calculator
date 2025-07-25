@@ -1,22 +1,18 @@
-import { useContext } from 'react'
-import { ProductsContext } from '../../contexts/products/products'
+import { useProductsContext } from '../../contexts/products/products'
 import { getTotal } from '../../logic/products/products'
 import Modal from '../common/Modal'
 import ButtonPrimary from '../common/ButtonPrimary'
 import TableOfProducts from './TableOfProducts'
 
 export default function ModalProductsSummary({ onClose }) {
-  const { filteredProducts } = useContext(ProductsContext)
+  const { products } = useProductsContext()
   return (
     <Modal className='flex flex-col items-center gap-4' onClose={onClose}>
       <div className='w-full max-h-[50vh] Scrollbar'>
-        <TableOfProducts
-          products={filteredProducts}
-          className='min-w-min'
-        />
+        <TableOfProducts className='min-w-min' filter={({count}) => count > 0} />
       </div>
       <span className='text-lg text-center font-bold'>
-        {`Total: $${getTotal(filteredProducts)}`}
+        {`Total: $${getTotal(products)}`}
       </span>
       <ButtonPrimary className='w-48 max-w-full' onClick={onClose}>
         Edit summary

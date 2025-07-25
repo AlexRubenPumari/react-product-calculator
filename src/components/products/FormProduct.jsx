@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useToggle } from '../../hooks/common/useToggle'
 import { PRODUCT_KEYS } from '../../config/constants'
 import ButtonPrimary from '../common/ButtonPrimary'
 import ButtonSecondary from '../common/ButtonSecondary'
@@ -8,89 +8,89 @@ import ListOfProductImages from '../images/ListOfProductImages'
 import Input from '../common/Input'
 
 export default function FormProduct({
-  type,
-  values,
-  errors,
-  onSubmit,
-  onCancel,
-  onChange,
-  onImageChange
+  type = 'Add',
+  values, errors,
+  onSubmit, onCancel, onChange, onImageChange,
 }) {
-  const [toggleSection, setToggleSection] = useState(null)
-  return !toggleSection ? (
+  const { value: showImageSelector, toggle: toggleImageSelector } = useToggle()
+
+  if (showImageSelector) {
+    return (
+      <ImageSelectorSection
+        onImageSelect={image => {
+          onImageChange(image)
+          toggleImageSelector(false)
+        }}
+        onClose={toggleImageSelector}
+      />
+    )
+  }
+
+  return (
     <Form
       type={type}
       values={values}
       errors={errors}
-      onSubmit={onSubmit}
-      onSelectImageClick={() => setToggleSection(true)}
       onChange={onChange}
+      onSubmit={onSubmit}
       onCancel={onCancel}
-    />
-  ) : (
-    <SectionOfImages
-      onCancel={() => setToggleSection(false)}
-      onImageClick={e => (onImageChange(e), setToggleSection(null))}  
+      onImageSelectClick={toggleImageSelector}
     />
   )
 }
 
-function SectionOfImages ({ onImageClick, onCancel }) {
+function ImageSelectorSection({ onImageSelect, onClose }) {
   return (
-    <div className='flex flex-col items-center gap-4 px-2'>
-      <p className='w-full text-left'>Select an image:</p>
-      <ListOfProductImages onImageClick={onImageClick} />
-      <ButtonPrimary
-        className='w-24'
-        onClick={onCancel}
-      >
+    <div className="flex flex-col items-center gap-4 px-2">
+      <p className="w-full text-left font-semibold">Select an image:</p>
+      <ListOfProductImages onImageClick={onImageSelect} />
+      <ButtonPrimary className="w-24" onClick={onClose}>
         Close
       </ButtonPrimary>
     </div>
   )
 }
 
-function Form({ type, values, errors, onChange, onSelectImageClick, onSubmit, onCancel }) {
+function Form({ type, values, errors, onChange, onSubmit, onCancel, onImageSelectClick }) {
   const [NAME, PRICE, IMAGE] = PRODUCT_KEYS
+
   return (
-    <>
-      {type && <h3 className='font-bold text-center uppercase'>{`${type} product`}</h3>}
-      <form
-        className='flex flex-col px-2'
-        onSubmit={onSubmit}
-      >
+    <div className="px-2">
+      <h3 className="font-bold text-center uppercase mb-4">{`${type} Product`}</h3>
+      <form className="flex flex-col gap-4" onSubmit={onSubmit}>
         <Input
-          label='Name'
+          label="Name"
           name={NAME}
-          placeholder='Cotton T-shirt'
+          placeholder="Cotton T-shirt"
           value={values[NAME]}
           error={errors[NAME]}
           onChange={onChange}
         />
         <Input
-          label='Price'
+          label="Price"
           name={PRICE}
-          placeholder='12.99'
+          placeholder="12.99"
           value={values[PRICE]}
           error={errors[PRICE]}
           onChange={onChange}
         />
         <FileSelector
           Display={ProductImage}
-          label='Image'
+          label="Image"
           value={values[IMAGE]}
           error={errors[IMAGE]}
-          onClick={onSelectImageClick}
+          onClick={onImageSelectClick}
         />
-        <div className='flex flex-wrap-reverse gap-5 justify-center mt-6'>
-          <ButtonSecondary className='w-24' onClick={onCancel}>
+
+        <div className="flex justify-center gap-4 mt-6">
+          <ButtonSecondary type="button" className="w-24" onClick={onCancel}>
             Cancel
           </ButtonSecondary>
-          <ButtonPrimary className='w-24'>
-            {type.charAt(0).toUpperCase() + type.slice(1)}
+          <ButtonPrimary type="submit" className="w-24">
+            {type}
           </ButtonPrimary>
         </div>
       </form>
-    </>
+    </div>
   )
 }

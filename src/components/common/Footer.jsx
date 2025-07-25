@@ -1,24 +1,25 @@
-import { useContext, useState } from 'react'
-import { ProductsContext } from '../../contexts/products/products'
+import { useToggle } from '../../hooks/common/useToggle'
+import { useProductsContext } from '../../contexts/products/products'
 import { IconCalculator } from './Icons'
 import ButtonCircle from './ButtonCircle'
 import ModalProductsSummary from '../products/ModalProductsSummary'
 
 export default function Footer() {
-  const { filteredProducts } = useContext(ProductsContext)
-  const [toggleModal, setToggleModal] = useState(false)
+  const { products } = useProductsContext()
+  const { value: isModalOpen, toggle: toggleModal } = useToggle() 
+  const hasProducts = products?.some(({ count }) => count > 0 )
+
   return (
     <>
-      {toggleModal && (
-        <ModalProductsSummary
-          onClose={() => setToggleModal(false)}
-        />
-      )}
-      <footer className='flex-shrink-0 h-10 px-4 relative bg-lime-600 rounded-tl-lg rounded-tr-lg'>
+      {isModalOpen && <ModalProductsSummary onClose={toggleModal} />}
+
+      <footer
+        className='flex-shrink-0 h-10 px-4 relative bg-lime-600 rounded-tl-lg rounded-tr-lg'
+      >
         <ButtonCircle
           className='ButtonPrimary-bold p-6 sm:p-5 absolute left-1/2 -translate-x-1/2 -translate-y-1/2'
-          onClick={() => setToggleModal(true)}
-          disabled={!filteredProducts || filteredProducts.length === 0}
+          onClick={toggleModal}
+          disabled={!hasProducts}
         >
           <IconCalculator className='w-7' />
         </ButtonCircle>

@@ -3,10 +3,11 @@ import { PRODUCT_KEYS } from '../../config/constants'
 import { isDecimal } from '../../logic/common/validations'
 import { isValidProductName, isValidProductPrice, isValidProductImg } from '../../logic/products/validations'
 
-export function useProductForm() {
+export function useProductForm(initialProduct) {
   const [NAME, PRICE, IMAGE] = PRODUCT_KEYS
+  const initialValues = initialProduct ?? { [NAME]: '', [PRICE]: '', [IMAGE]: null }
   const { values, errors, handleChange, validateForm, setValues, setErrors } = useForm(
-    { [NAME]: '', [PRICE]: '', [IMAGE]: null },
+    initialValues,
     { [PRICE]: isDecimal },
     { [NAME]: isValidProductName, [PRICE]: isValidProductPrice, [IMAGE]: isValidProductImg }
   )
@@ -15,5 +16,5 @@ export function useProductForm() {
     setErrors(prevErrors => ({ ...prevErrors, [IMAGE]: null }))
   }
 
-  return { values, errors, handleChange, handleImageChange, validateForm }
+  return { values, errors, handleChange, handleImageChange, isValidForm: validateForm }
 }

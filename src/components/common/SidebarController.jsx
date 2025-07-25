@@ -1,20 +1,14 @@
-import { useContext } from 'react'
-import { ModalContext } from '../../contexts/common/modal'
+import { useModalContext } from '../../contexts/common/modal'
 import { LBLS_SIDEBAR } from '../../config/labels'
 import Sidebar from './Sidebar'
 
 export default function SidebarController ({ onClose }) {
-  const { openAddProductModal, openEditProductModal, openDeleteProductModal } =
-    useContext(ModalContext)
-  return (
-    <Sidebar
-      items={LBLS_SIDEBAR}
-      onClicks={[
-        () => openAddProductModal(),
-        () => openEditProductModal(),
-        () => openDeleteProductModal(),
-      ]}
-      onClose={onClose}
-    />
-  )
+  const {
+    openAddProductModal,
+    openProductListToEditModal,
+    openDeleteProductModal
+  } = useModalContext()
+  const onClicks = [openAddProductModal, openProductListToEditModal, openDeleteProductModal]
+  
+  return <Sidebar items={LBLS_SIDEBAR} onClicks={onClicks} onClose={onClose} />
 }

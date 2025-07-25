@@ -1,7 +1,7 @@
-import { createContext } from 'react'
+import { createContext, useContext } from 'react'
 import useProducts from '../../hooks/products/useProducts'
 
-export const ProductsContext = createContext()
+const ProductsContext = createContext()
 
 export default function ProductsProvider({ children }) {
   const contextValue = useProducts()
@@ -11,4 +11,14 @@ export default function ProductsProvider({ children }) {
       {children}
     </ProductsContext.Provider>
   )
+}
+
+export function useProductsContext() {
+  const context = useContext(ProductsContext)
+
+  if (!context) {
+    throw new Error('useProductsContext must be used within a ProductsProvider')
+  }
+
+  return context
 }

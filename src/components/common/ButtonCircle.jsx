@@ -8,7 +8,8 @@ export default function ButtonCircle({
       className={btnClassName}
       disabled={disabled}
       onClick={onClick}
-      title={title}>
+      title={title}
+    >
       {children}
     </button>
   )

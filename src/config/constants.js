@@ -11,6 +11,8 @@ export const MODAL = {
   ADD_IMG: 4,
   EDIT_IMG: 5,
   DELETE_IMG: 6,
+  PRODUCTS_LIST_TO_EDIT: 7,
+  PRODUCTS_LIST_TO_DELETE: 8,
 }
 export const PRODUCT_KEYS = ['name', 'price', 'img']
 
