@@ -1,5 +1,5 @@
 import { useFetch } from '../common/useFetch'
-import { getAllProducts, addProduct } from '../../services/products'
+import { getAllProducts, addProduct, editProductById } from '../../services/products'
 import { mapProductsFromStorageToUI, prepareProductForStorage, prepareProductForUI } from '../../adapters/products'
 import { clamp } from '../../logic/common/utilities'
 
@@ -16,9 +16,22 @@ export default function useProducts() {
 
   const addNewProduct = values => {
     const toStore = prepareProductForStorage(values)
+
     return addProduct(toStore).then(id =>
       setProducts(prev => [prepareProductForUI(id, values), ...prev])
     )
+  }
+
+  const editProduct = values => {
+    const { id } = values
+    const toEdit = prepareProductForStorage(values)
+    return editProductById(id, toEdit)
+      .then(product => {
+        product.img = values.img
+        setProducts(prev => prev.map(
+          p => p.id === product.id ? prepareProductForUI(id, product) : p
+        ))
+      })
   }
 
   return {
@@ -26,6 +39,7 @@ export default function useProducts() {
     error,
     isLoading,
     addNewProduct,
+    editProduct,
     increaseProductCount: id => updateCount(id, 1),
     decreaseProductCount: id => updateCount(id, -1)
   }

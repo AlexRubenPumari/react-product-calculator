@@ -7,7 +7,7 @@ export function isDecimal (char) {
 }
 
 export function isFormattedPrice (string) {
-  const dots = string.match(/\./g)
+  const dots = String(string).match(/\./g)
 
   if (!dots || dots.length === 1) return true
 }

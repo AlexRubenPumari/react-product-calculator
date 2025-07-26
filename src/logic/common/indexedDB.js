@@ -29,7 +29,7 @@ export const openDB = () => {
           IMAGES_STORE_NAME, { keyPath: 'id', autoIncrement: true }
         )
 
-        objectStore.transaction.oncomplete = (e) => {
+        objectStore.transaction.oncomplete = () => {
           addItems(DEFAULT_PRODUCT_IMAGES, IMAGES_STORE_NAME)
         }
       }
@@ -44,8 +44,8 @@ export const openDB = () => {
       console.error('Error al abrir IndexedDB:', e.target.errorCode)
       reject(new Error('Error al abrir la base de datos.'))
     }
-  });
-};
+  })
+}
 
 /**
  * Agrega un nuevo item al Object Store que indiquemos.
@@ -86,7 +86,7 @@ export const addItems = async (items, storeName) => {
     }
 
     transaction.onerror = e => {
-      reject(e.target.errorCode);
+      reject(e.target.errorCode)
     }
   })
 }
@@ -111,10 +111,42 @@ export const getItemById = async (id, storeName) => {
   const dbInstance = await openDB()
   const transaction = dbInstance.transaction([storeName])
   const store = transaction.objectStore(storeName)
-  
+
   return new Promise((resolve, reject) => {
     const request = store.get(id)
-    request.onsuccess = () => resolve(request.result)
+    request.onsuccess = e => {
+      const data = e.target.result
+      if (!data) reject(`Item with id ${id} not found`)
+
+      resolve(data)
+    }
     request.onerror = e => reject(e.target.errorCode)
+  })
+}
+
+export const editItem = async (id, item, storeName) => {
+  const db = await openDB()
+
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction([storeName], 'readwrite')
+    const objectStore = transaction.objectStore(storeName)
+
+    transaction.onerror = e => reject(e.target.error)
+    transaction.onabort = e => reject(e.target.error)
+
+    const request = objectStore.get(id)
+
+    request.onerror = e => reject(e.target.error)
+    request.onsuccess = e => {
+      const data = e.target.result
+
+      if (!data) return reject(new Error(`No item found with id ${id}`))
+
+      Object.assign(data, item)
+
+      const updateRequest = objectStore.put(data)
+      updateRequest.onerror = e => reject(e.target.error)
+      updateRequest.onsuccess = () => resolve(data)
+    }
   })
 }

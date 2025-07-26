@@ -8,7 +8,12 @@ export default function SidebarController ({ onClose }) {
     openProductListToEditModal,
     openDeleteProductModal
   } = useModalContext()
-  const onClicks = [openAddProductModal, openProductListToEditModal, openDeleteProductModal]
+  
+  const onClicks = [
+    openAddProductModal,
+    openProductListToEditModal,
+    openDeleteProductModal
+  ]
   
   return <Sidebar items={LBLS_SIDEBAR} onClicks={onClicks} onClose={onClose} />
 }
