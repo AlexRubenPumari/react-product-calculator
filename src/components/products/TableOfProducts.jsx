@@ -1,12 +1,10 @@
-import { useProductsContext } from '../../contexts/products/products'
 import { Table, Row } from '../common/Table'
 import { arrayTableHeader } from '../../config/constants'
 
 export default function TableOfProducts({
-  className = '', filter = () => true, onRowClick
+  className = '', products, filter, onRowClick
 }) {
-  const { products } = useProductsContext()
-  const filteredProducts = products.filter(filter)
+  const filteredProducts = filter ? products.filter(filter) : products
 
   return (
     <Table cols={arrayTableHeader} className={`w-full ${className}`}>

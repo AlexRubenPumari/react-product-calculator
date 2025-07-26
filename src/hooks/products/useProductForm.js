@@ -16,5 +16,22 @@ export function useProductForm(initialProduct) {
     setErrors(prevErrors => ({ ...prevErrors, [IMAGE]: null }))
   }
 
-  return { values, errors, handleChange, handleImageChange, isValidForm: validateForm }
+  const resetForm = () => {
+    setValues(prevValues => {
+      let newValues = {}
+      for (const fieldName in prevValues) {
+        newValues[fieldName] = ''
+      }
+      newValues.img = null
+
+      return newValues
+    })
+    setErrors({})
+  }
+
+  return {
+    values, errors,
+    handleChange, handleImageChange,
+    isValidForm: validateForm, resetForm
+  }
 }

@@ -6,9 +6,7 @@ import FormProduct from './FormProduct'
 
 export default function ModalFormProduct({ initialProduct, onClose, onSubmit }) {
   const isEditing = Boolean(initialProduct)
-  const { values, errors, handleChange, handleImageChange, isValidForm } = useProductForm(
-    initialProduct
-  )
+  const { values, errors, handleChange, handleImageChange, isValidForm, resetForm } = useProductForm(initialProduct)
   const { notification, setNotification } = useNotification(3000)
 
   const handleSubmit = e => {
@@ -16,12 +14,15 @@ export default function ModalFormProduct({ initialProduct, onClose, onSubmit }) 
     if (!isValidForm()) return
 
     onSubmit(values)
-      .then(() => setNotification(
-        {
-          type: 'success',
-          message: `Product ${isEditing ? 'updated': 'added'} successfully`,
-        }
-      ))
+      .then(() => {
+        !isEditing && resetForm()
+        setNotification(
+          {
+            type: 'success',
+            message: `Product ${isEditing ? 'updated': 'added'} successfully`,
+          }
+        )
+      })
       .catch(() => setNotification(
         {
           type: 'error',

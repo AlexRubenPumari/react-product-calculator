@@ -45,7 +45,7 @@ function ImageSelectorSection({ onImageSelect, onClose }) {
       <p className="w-full text-left font-semibold">Select an image:</p>
       <ListOfProductImages onImageClick={onImageSelect} />
       <ButtonPrimary className="w-24" onClick={onClose}>
-        Close
+        Go back
       </ButtonPrimary>
     </div>
   )
