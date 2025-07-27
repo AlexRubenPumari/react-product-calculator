@@ -8,7 +8,9 @@ export default function ListOfProducts ({ className }) {
   const { products, isLoading } = useProductsContext()
   const hasProducts = products.length > 0
   const withoutProducts = !hasProducts && !isLoading
-  const divClassName = classNames(className, !hasProducts && 'flex-center-all')
+  const divClassName = classNames(
+    className, hasProducts ? 'content-start' : 'flex-center-all'
+  )
 
   return (
     <div className={divClassName}>

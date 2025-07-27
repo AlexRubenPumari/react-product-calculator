@@ -4,7 +4,7 @@ export function Menu({ items, onItemClick, className = '' }) {
       {items.map((item, i) => (
         <li
           key={i}
-          className='px-4 py-1 hover:bg-black/10 transition-colors cursor-pointer whitespace-nowrap'
+          className='px-4 py-4 sm:py-1 hover:bg-black/10 transition-colors cursor-pointer whitespace-nowrap'
           onClick={() => onItemClick(i)}
         >
           {item}

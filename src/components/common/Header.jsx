@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <>
       <header
-        className='flex items-center gap-4 min-h-16 px-4 bg-lime-600 text-white rounded-b-lg select-none'
+        className='flex items-center gap-4 min-h-20 px-4 bg-lime-600 text-white rounded-b-lg select-none'
       >
         <ButtonMenu
           className='ButtonPrimary'
