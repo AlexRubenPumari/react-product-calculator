@@ -3,6 +3,7 @@ import { useProductForm } from '../../hooks/products/useProductForm'
 import Notification from '../common/Notification'
 import Modal from '../common/Modal'
 import FormProduct from './FormProduct'
+import { classNames } from '../../logic/common/classNames'
 
 export default function ModalFormProduct({ initialProduct, onClose, onSubmit }) {
   const isEditing = Boolean(initialProduct)
@@ -30,8 +31,12 @@ export default function ModalFormProduct({ initialProduct, onClose, onSubmit }) 
         }
       ))
   }
+  const notificationClass = classNames(
+    'text-center', notification ? 'visible' : 'invisible'
+  )
+  
   return (
-    <Modal onClose={onClose} className='Scrollbar relative'>
+    <Modal onClose={onClose} className='Scrollbar'>
       <FormProduct
         type={isEditing ? 'Edit' : 'Add'}
         values={values}
@@ -40,12 +45,11 @@ export default function ModalFormProduct({ initialProduct, onClose, onSubmit }) 
         onImageChange={handleImageChange}
         onSubmit={handleSubmit}
         onCancel={onClose}
-      />
-      {notification && (
-        <Notification type={notification.type} className='absolute -bottom-28 left-4'>
-          {notification.message}
+      >
+        <Notification type={notification?.type} className={notificationClass}>
+          {notification?.message || 'fallback'}
         </Notification>
-      )}
+      </FormProduct>
     </Modal>
   )
 }
