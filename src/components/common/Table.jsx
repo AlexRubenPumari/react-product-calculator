@@ -32,7 +32,7 @@ export function Row({ cells, onClick, data }) {
   return (
     <tr className={trClass} onClick={() => onClick?.(data)}>
       {cells.map(({ value, className }, i) => (
-        <td key={i} className={classNames('text-center p-2', className)}>
+        <td key={i} className={classNames('text-center first:rounded-l-lg last:rounded-r-lg px-2 py-3 sm:py-2', className)}>
           {value}
         </td>
       ))}

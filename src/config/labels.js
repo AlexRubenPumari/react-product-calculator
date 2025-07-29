@@ -1,6 +1,6 @@
 export const LBLS_SIDEBAR = [
-  'Add product',
-  'Edit product',
-  'Delete product',
-  // 'Image',
+  'Home',
+  'Add Product',
+  'Edit Product',
+  'Delete Product',
 ]

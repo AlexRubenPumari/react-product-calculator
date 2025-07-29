@@ -1,13 +1,15 @@
-import IndexPage from './components/common/IndexPage'
+import PageProvider from './contexts/common/page'
 import ProductsProvider from './contexts/products/products'
-import ModalProvider from './contexts/common/modal'
+import Header from './components/common/Header'
+import PageController from './components/common/PageController'
 
 export default function App() {
   return (
     <ProductsProvider>
-      <ModalProvider>
-        <IndexPage />
-      </ModalProvider>
+      <PageProvider>
+        <Header />
+        <PageController />
+      </PageProvider>
     </ProductsProvider>
   )
 }

@@ -1,5 +1,5 @@
-import { Table, Row } from '../common/Table'
 import { arrayTableHeader } from '../../config/constants'
+import { Table, Row } from '../common/Table'
 
 export default function TableOfProducts({
   className = '', products, filter, onRowClick

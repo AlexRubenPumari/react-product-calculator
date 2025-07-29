@@ -2,8 +2,8 @@ import { Menu } from './Menu'
 
 export default function Sidebar({ onClose, items, onClicks }) {
   const handleItemClick = i => {
-    onClose()
     onClicks[i]()
+    onClose()
   }
 
   return (

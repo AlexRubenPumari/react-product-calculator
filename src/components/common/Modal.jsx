@@ -11,7 +11,7 @@ export default function Modal ({ children, className = '', onClose }) {
         onClick={e => e.stopPropagation()}
       >
         <ButtonClose className='block ml-auto' onClick={onClose} />
-        <div className={`max-h-[60vh] ${className}`}>
+        <div className={`min-h-[30vh] max-h-[60vh] ${className}`}>
           { children }
         </div>
       </div>

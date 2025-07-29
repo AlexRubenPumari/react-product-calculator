@@ -1,9 +1,11 @@
-export default function ButtonPrimary({ children, className = '', onClick }) {
+export default function ButtonPrimary({
+  children, className = '', onClick, type = 'submit'
+}) {
   return (
     <button
       className={`Button ButtonPrimary ${className}`}
       onClick={onClick}
-      type='submit'
+      type={type}
     >
       {children}
     </button>

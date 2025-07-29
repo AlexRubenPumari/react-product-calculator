@@ -4,16 +4,15 @@ export const arrayTableHeader = [
   { value: 'count', className: 'hidden sm:table-cell' },
   { value: 'total' },
 ]
-export const MODAL = {
+
+export const PAGES = {
+  INDEX: 0, 
   ADD_PRODUCT: 1,
   EDIT_PRODUCT: 2,
-  DELETE_PRODUCT: 3,
-  ADD_IMG: 4,
-  EDIT_IMG: 5,
-  DELETE_IMG: 6,
   PRODUCTS_LIST_TO_EDIT: 7,
   PRODUCTS_LIST_TO_DELETE: 8,
 }
+
 export const PRODUCT_KEYS = ['name', 'price', 'img']
 
 export const ICE_CREAM_TYPES = {

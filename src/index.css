@@ -9,7 +9,7 @@
 }
 @layer components {
   .Input {
-    @apply w-full px-4 py-2 rounded-md;
+    @apply w-full px-4 py-4 sm:py-2 rounded-md;
   }
   .LabelError {
     @apply absolute left-0 -bottom-6 text-sm text-red-500 font-bold;

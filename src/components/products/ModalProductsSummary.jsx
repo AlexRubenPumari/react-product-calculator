@@ -9,11 +9,7 @@ export default function ModalProductsSummary({ onClose }) {
   return (
     <Modal className='flex flex-col items-center gap-4' onClose={onClose}>
       <div className='w-full max-h-[50vh] Scrollbar'>
-        <TableOfProducts
-          className='min-w-min'
-          products={products}
-          filter={({count}) => count > 0}
-        />
+        <TableOfProducts className='min-w-min' filter={({count}) => count > 0} />
       </div>
       <span className='text-lg text-center font-bold'>
         {`Total: $${getTotal(products)}`}
