@@ -1,5 +1,5 @@
 import { useFetch } from '../common/useFetch'
-import { getAllProducts, addProduct, editProductById } from '../../services/products'
+import { getAllProducts, addProduct, editProductById, deleteProductsById } from '../../services/products'
 import { mapProductsFromStorageToUI, prepareProductForStorage, prepareProductForUI } from '../../adapters/products'
 import { clamp } from '../../logic/common/utilities'
 
@@ -34,12 +34,19 @@ export default function useProducts() {
       })
   }
 
+  const deleteProducts = ids => {
+    return deleteProductsById(ids).then(ids => {
+        setProducts(prev => prev.filter(p => !ids.includes(p.id)))
+    })
+  }
+
   return {
     products: products ?? [],
     error,
     isLoading,
     addNewProduct,
     editProduct,
+    deleteProducts,
     increaseProductCount: id => updateCount(id, 1),
     decreaseProductCount: id => updateCount(id, -1)
   }

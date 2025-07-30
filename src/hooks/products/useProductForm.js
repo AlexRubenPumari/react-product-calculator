@@ -32,6 +32,6 @@ export function useProductForm(initialProduct) {
   return {
     values, errors,
     handleChange, handleImageChange,
-    isValidForm: validateForm, resetForm
+    validateForm, resetForm
   }
 }

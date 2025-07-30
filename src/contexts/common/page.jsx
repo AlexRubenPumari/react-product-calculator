@@ -10,6 +10,7 @@ export default function PageProvider ({ children }) {
   const contextValue = {
     page,
     goProductsListToEdit: () => setPage({ type: PRODUCTS_LIST_TO_EDIT }),
+    goProductsListToDelete: () => setPage({ type: PRODUCTS_LIST_TO_DELETE }),
     goIndex: () => setPage({ type: INDEX }),
     goEditProduct: product => setPage({ type: EDIT_PRODUCT, value: product }),
     goAddProduct: () => setPage({ type: ADD_PRODUCT }),

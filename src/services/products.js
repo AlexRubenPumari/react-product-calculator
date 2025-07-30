@@ -1,4 +1,4 @@
-import { getAllItems, addItem, editItem, PRODUCTS_STORE_NAME } from '../logic/common/indexedDB'
+import { getAllItems, addItem, editItem, deleteItems, PRODUCTS_STORE_NAME } from '../logic/common/indexedDB'
 import { getImageById } from './images'
 
 export async function getAllProducts() {
@@ -11,10 +11,12 @@ export async function getAllProducts() {
   )
   return products
 }
+export function deleteProductsById (ids) {
+  return deleteItems(ids, PRODUCTS_STORE_NAME)
+}
 export function addProduct(product) {
   return addItem(product, PRODUCTS_STORE_NAME)
 }
-export function editProductById (id, item) {
-  return editItem(id, item, PRODUCTS_STORE_NAME)
+export function editProductById (id, newItem) {
+  return editItem(id, newItem, PRODUCTS_STORE_NAME)
 }
-// export function deleteProduct ()

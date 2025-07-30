@@ -6,12 +6,14 @@ export function useNotification (duration = 3000) {
   useEffect(() => {
     if (!notification) return
 
-    const timeoutId = setTimeout(() => {
-      setNotification(null)
-    }, duration)
+    const timeoutId = setTimeout(() => setNotification(null), duration)
 
     return () => clearTimeout(timeoutId)
   }, [notification])
 
-  return { notification, setNotification }
+
+  const setSuccess = message => setNotification({ type: 'success',message})
+  const setError = message => setNotification({ type: 'error', message })
+
+  return { notification, setSuccess, setError }
 }

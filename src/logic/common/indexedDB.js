@@ -150,3 +150,23 @@ export const editItem = async (id, item, storeName) => {
     }
   })
 }
+
+export const deleteItems = async (ids, storeName) => {
+  const db = await openDB()
+  const transaction = db.transaction([storeName], 'readwrite')
+  const store = transaction.objectStore(storeName)
+
+  return new Promise((resolve, reject) => {
+    transaction.oncomplete = () => resolve(ids)
+    transaction.onerror = e => reject(e.target.error)
+    transaction.onabort = e => reject(e.target.error)
+
+    ids.forEach(id => {
+      const request = store.delete(id)
+      request.onerror = e => {
+        console.error(`Error deleting id ${id}:`, e.target.error)
+        transaction.abort()
+      }
+    })
+  })
+}
