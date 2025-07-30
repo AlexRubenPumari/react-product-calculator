@@ -1,10 +1,3 @@
-export const arrayTableHeader = [
-  { value: 'name' },
-  { value: 'price', className: 'hidden sm:table-cell' },
-  { value: 'count', className: 'hidden sm:table-cell' },
-  { value: 'total' },
-]
-
 export const PAGES = {
   INDEX: 0, 
   ADD_PRODUCT: 1,

@@ -11,7 +11,6 @@ export default function ModalProductsSummary({ onClose }) {
       <div className='w-full max-h-[50vh] Scrollbar'>
         <TableOfProducts
           products={products}
-          className='min-w-min'
           filter={({count}) => count > 0}
         />
       </div>

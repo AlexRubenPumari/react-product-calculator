@@ -6,7 +6,7 @@ export default function ActionButtons({
   className, onCancel, onAccept, cancelText = 'Cancel', acceptText
 }) {
   return (
-    <div className={classNames('flex justify-center gap-4', className)}>
+    <div className={classNames('flex justify-center flex-wrap gap-4', className)}>
       {onCancel && (
         <ButtonSecondary className='w-24' onClick={onCancel}>{cancelText}</ButtonSecondary>
       )}

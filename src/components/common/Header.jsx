@@ -14,7 +14,6 @@ export default function Header() {
           className='ButtonPrimary'
           onClick={toggleSidebar}
         />
-        <h1 className='text-2xl font-bold'>Sales Calculator</h1>
       </header>
       {isSidebarOpen && <SidebarController onClose={toggleSidebar} />}
     </>
