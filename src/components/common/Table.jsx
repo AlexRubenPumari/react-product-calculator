@@ -2,7 +2,7 @@ import { classNames } from '../../logic/common/classNames'
 
 const Table = ({ columns, data, onRowClick }) => {
   const trClasses = classNames(
-    'border-b-2 last:border-b-0 hover:bg-black/10 transition-colors',
+    'group border-b-2 last:border-b-0 hover:bg-black/10 transition-colors',
     onRowClick && 'cursor-pointer'
   )
   return (

@@ -5,27 +5,42 @@ import TableOfProducts from '../components/products/TableOfProducts'
 import Alert from '../components/common/Alert'
 import WithoutProducts from '../components/products/WithoutProducts'
 import ActionButtons from '../components/common/ActionButtons'
+import Checkbox from '../components/common/Checkbox'
 
 export default function ProductsListToDeletePage({ mode, onGoBack }) {
   const { goEditProduct } = usePageContext()
   const { products, deleteProducts } = useProductsContext()
 
-  const refProducts = useRef([])
-  const [productsToDelete, setProductsToDelete] = useState(products)
+  const [productsToDelete, setProductsToDelete] = useState([])
+
+  const viewToSelect = [
+    { key: 'selected', important: true, render: (_, row) => {
+      return <Checkbox value={productsToDelete.includes(row.id)} className='text-green-600 group-hover:scale-110' />
+    } },
+    { key: 'id', label: 'Id' },
+    { key: 'name', label: 'Name', important: true },
+    { key: 'price', label: 'Price', important: true, render: price => `$${price}` },
+    { key: 'count', label: 'Count' },
+]
 
   const hasProducts = products?.length > 0
 
-  const onRowClick = product => {
+  const handleRowClick = product => {
     if (mode === 'edit') {
       goEditProduct(product)
     } else if (mode === 'delete') {
-      refProducts.current.push(product.id)
-      setProductsToDelete(prev => prev.filter(p => p.id !== product.id))
+      if (productsToDelete.includes(product.id)) {
+        setProductsToDelete(prev => prev.filter(id => id !== product.id))
+      } else {
+        setProductsToDelete(prev => [...prev, product.id])
+      }
+      console.log(product.id)
     }
   }
   const handleAccept = () => {
-    deleteProducts(refProducts.current)
-      .then(() => console.log(refProducts.current))
+    // deleteProducts(productsToDelete)
+    //   .then(() => console.log(productsToDelete))
+    console.log(productsToDelete)
   }
 
   const ProductsTableContent = () => (
@@ -37,19 +52,20 @@ export default function ProductsListToDeletePage({ mode, onGoBack }) {
         <Alert>
           {
             mode === 'delete'
-              ? '⚠️ Select the products to delete, then save the changes'
+              ? '⚠️ Select the products to delete, then commit the changes'
               : '⚠️ Select a product to edit'
           }
         </Alert>
         <TableOfProducts
-          products={productsToDelete}
-          onRowClick={onRowClick}
+          colsView={viewToSelect}
+          products={products}
+          onRowClick={handleRowClick}
         />
       </div>
       <ActionButtons
         onCancel={onGoBack}
         onAccept={mode === 'delete' && handleAccept}
-        acceptText={mode === 'delete' && 'Save'}
+        acceptText={mode === 'delete' && 'Commit'}
       />
     </>
   )

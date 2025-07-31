@@ -4,7 +4,6 @@ import { PAGES } from '../../config/constants'
 import IndexPage from '../../pages/IndexPage'
 import ProductFormPage from '../../pages/ProductFormPage'
 import ProductsListPage from '../../pages/ProductsListPage'
-import ProductsListToDeletePage from '../../pages/ProductsListToDeletePage'
 
 const { INDEX, ADD_PRODUCT, EDIT_PRODUCT, PRODUCTS_LIST_TO_EDIT, PRODUCTS_LIST_TO_DELETE } = PAGES
 
@@ -21,10 +20,9 @@ export default function PageController () {
     return <ProductFormPage onGoBack={goProductsListToEdit} initialProduct={page.value} onSubmit={editProduct} />
   }
   if (page.type === PRODUCTS_LIST_TO_EDIT) {
-    return <ProductsListToDeletePage mode='edit' onGoBack={goIndex} />
-    // return <ProductsListPage onGoBack={goIndex} />
+    // return <ProductsListPage mode='edit' onGoBack={goIndex} />
   }
   if (page.type === PRODUCTS_LIST_TO_DELETE) {
-    return <ProductsListToDeletePage mode='delete' onGoBack={goIndex} />
+    return <ProductsListPage mode='delete' onGoBack={goIndex} />
   }
 }
