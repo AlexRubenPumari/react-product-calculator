@@ -32,7 +32,7 @@ const Table = ({ columns, data, onRowClick }) => {
                   <td
                     key={col.key}
                     className={classNames(
-                      'first:rounded-l-lg last:rounded-r-lg px-2 py-3 sm:py-2',
+                      'px-2 py-3 sm:py-2',
                       !col.important && 'hidden md:table-cell',
                       col.key === 'name' ? 'text-left' : 'text-center'
                     )}

@@ -10,7 +10,7 @@ export default function ModalProductsSummary({ onClose }) {
     <Modal className='flex flex-col items-center gap-4' onClose={onClose}>
       <div className='w-full max-h-[50vh] Scrollbar'>
         <ProductsTable
-          products={products}
+          data={products}
           filter={({count}) => count > 0}
         />
       </div>

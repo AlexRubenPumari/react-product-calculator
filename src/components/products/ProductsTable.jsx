@@ -20,9 +20,9 @@ const columnPresets = {
 }
 
 export default function ProductsTable({
-  products, filter, colsMode = 'summary', onRowClick
+  data, filter, colsMode = 'summary', onRowClick
 }) {
-  const visibleProducts = filter ? products.filter(filter) : products
+  const visibleProducts = filter ? data.filter(filter) : data
   const columns = columnPresets[colsMode]
 
   return <Table columns={columns} data={visibleProducts} onRowClick={onRowClick} />
