@@ -3,16 +3,18 @@ import ButtonPrimary from './ButtonPrimary'
 import ButtonSecondary from './ButtonSecondary'
 
 export default function ActionButtons({
-  className, onCancel, onAccept, cancelText = 'Cancel', acceptText
+  className, onSecondaryClick, onPrimaryClick, secondaryText, primaryText, disabled
 }) {
   return (
     <div className={classNames('flex justify-center flex-wrap gap-4', className)}>
-      {onCancel && (
-        <ButtonSecondary className='w-24' onClick={onCancel}>{cancelText}</ButtonSecondary>
+      {(onSecondaryClick || secondaryText) && (
+        <ButtonSecondary className='w-24' onClick={onSecondaryClick}>
+          {secondaryText}
+        </ButtonSecondary>
       )}
-      {(onAccept || acceptText) && (
-        <ButtonPrimary type='submit' className='w-24' onClick={onAccept}>
-          {acceptText || 'Accept'}
+      {(onPrimaryClick || primaryText) && (
+        <ButtonPrimary type='submit' className='w-24' onClick={onPrimaryClick} disabled={disabled}>
+          {primaryText}
         </ButtonPrimary>
       )}
     </div>

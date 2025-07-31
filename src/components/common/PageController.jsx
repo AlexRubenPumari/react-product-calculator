@@ -3,7 +3,7 @@ import { usePageContext } from '../../contexts/common/page'
 import { PAGES } from '../../config/constants'
 import IndexPage from '../../pages/IndexPage'
 import ProductFormPage from '../../pages/ProductFormPage'
-import ProductsListPage from '../../pages/ProductsListPage'
+import DeleteProductsPage from '../../pages/DeleteProductsPage'
 
 const { INDEX, ADD_PRODUCT, EDIT_PRODUCT, PRODUCTS_LIST_TO_EDIT, PRODUCTS_LIST_TO_DELETE } = PAGES
 
@@ -23,6 +23,6 @@ export default function PageController () {
     // return <ProductsListPage mode='edit' onGoBack={goIndex} />
   }
   if (page.type === PRODUCTS_LIST_TO_DELETE) {
-    return <ProductsListPage mode='delete' onGoBack={goIndex} />
+    return <DeleteProductsPage mode='delete' onGoBack={goIndex} />
   }
 }

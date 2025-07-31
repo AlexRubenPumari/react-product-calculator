@@ -47,7 +47,11 @@ export default function FormProduct({
           onClick={toggleModal}
         />
         {children}
-        <ActionButtons onCancel={onCancel} acceptText={type} />
+        <ActionButtons
+          onSecondaryClick={onCancel}
+          secondaryText='Cancel'
+          primaryText={type}
+        />
       </form>
       {isModalOpen && (
         <ImageSelectorModal
