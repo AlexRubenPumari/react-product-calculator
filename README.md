@@ -2,6 +2,7 @@
 ![React](https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
+![Imagen del Proyecto](readme/img1.jpg)
 ---
 
 ## 📁 Estructura del Proyecto
