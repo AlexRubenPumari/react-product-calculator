@@ -22,6 +22,7 @@
   - Event Loop: Entender su flujo fue clave para resolver un problema con el manejo de las transacciones asíncronas en IndexedDB.
   - Componentes UI: Construirlos a mano con Tailwind está bueno pero lleva tiempo. Estoy considerando usar UI kits como React Bootstrap.
   - Manejo de estado: `useState` puede volverse complejo en apps medianas. Herramientas como Zustand podrían simplificarlo.
+  - TypeScript: Necesito implementarlo para mejorar el tipado, evitar errores silenciosos y facilitar el mantenimiento en proyectos más grandes.
   ---
 
   ## 📁 Estructura del Proyecto
