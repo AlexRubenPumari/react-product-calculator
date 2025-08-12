@@ -9,7 +9,7 @@ export default function ListOfProductImages({ onImageClick }) {
   if (error) return <p>Error</p>
   
   return (
-    <ul className='flex flex-wrap justify-center gap-4 overflow-y-scroll'>
+    <ul className='flex flex-wrap justify-center gap-4 overflow-y-auto'>
       {images?.map(({ id, type, styles }) => (
         <li key={id}>
           <ProductImage
