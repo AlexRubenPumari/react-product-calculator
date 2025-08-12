@@ -1,5 +1,5 @@
 export const PAGES = {
-  INDEX: 0, 
+  INDEX: 0,
   ADD_PRODUCT: 1,
   EDIT_PRODUCT: 2,
   PRODUCTS_LIST_TO_EDIT: 7,
@@ -15,12 +15,16 @@ export const ICE_CREAM_TYPES = {
 }
 
 export const DEFAULT_PRODUCT_IMAGES = [
-  { type: ICE_CREAM_TYPES.CONE, styles: { iceCreamColor: 'red' } },
-  { type: ICE_CREAM_TYPES.CONE, styles: { hasShine: true, iceCreamColor: '#6b3700' } },
-  { type: ICE_CREAM_TYPES.CONE, styles: { hasShine: false, iceCreamColor: '#6b3700' } },
-  { type: ICE_CREAM_TYPES.CONE, styles: { hasShine: true, iceCreamColor: '#fff' } },
+  { type: ICE_CREAM_TYPES.CONE, styles: { hasShine: true, iceCreamColor: '#7B3F00' } },
+  { type: ICE_CREAM_TYPES.CONE, styles: { hasShine: true, iceCreamColor: '#fff8dc' } },
+  { type: ICE_CREAM_TYPES.LOLLY, styles: { hasShine: true, iceCreamColor: '#6F2DA8' } },
+  { type: ICE_CREAM_TYPES.LOLLY, styles: { hasShine: true, iceCreamColor: '#FF4F79' } },
+  { type: ICE_CREAM_TYPES.LOLLY, styles: { hasShine: true, iceCreamColor: '#FFCBA4' } },
+  { type: ICE_CREAM_TYPES.TUB, styles: { iceCreamColor: '#fc5a8d' } },
+  { type: ICE_CREAM_TYPES.TUB, styles: { iceCreamColor: '#f3e5ab' } },
+  { type: ICE_CREAM_TYPES.TUB, styles: { iceCreamColor: '#c68642' } },
+  { type: ICE_CREAM_TYPES.TUB, styles: { iceCreamColor: '#3b3b3b' } },
 ]
-
 
 // const productInState = {
 //   id: 1,

@@ -1,7 +1,7 @@
 import { DEFAULT_PRODUCT_IMAGES } from '../../config/constants'
 
 export const DB_NAME = 'ReactAppDB'
-export const DB_VERSION = 4
+export const DB_VERSION = 5
 export const PRODUCTS_STORE_NAME = 'products'
 export const IMAGES_STORE_NAME = 'images'
 
